@@ -1,0 +1,4 @@
+--patch-module
+com.test.bus=_
+--add-reads
+com.test.bus=ALL-UNNAMED
