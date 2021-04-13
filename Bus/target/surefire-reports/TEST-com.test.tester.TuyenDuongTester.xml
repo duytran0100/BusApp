@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="1" name="com.test.tester.ChuyenXeTester" time="3.219" errors="0" skipped="0">
+<testsuite tests="4" failures="0" name="com.test.tester.TuyenDuongTester" time="0.768" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="15.0.2+7-27"/>
@@ -14,7 +14,7 @@
     <property name="user.script" value=""/>
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="test" value="com.test.tester.ChuyenXeTester"/>
+    <property name="test" value="com.test.tester.TuyenDuongTester"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="D:\NetBeansProject\Bus"/>
     <property name="java.vm.compressedOopsMode" value="32-bit"/>
@@ -45,7 +45,7 @@
     <property name="java.class.path" value="D:\Program Files\NetBeans-12.2\netbeans\java\maven\bin\..\boot\plexus-classworlds-2.6.0.jar"/>
     <property name="java.vm.specification.version" value="15"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=com.test.tester.ChuyenXeTester -Dmaven.ext.class.path=D:\Program Files\NetBeans-12.2\netbeans\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 surefire:test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=com.test.tester.TuyenDuongTester -Dmaven.ext.class.path=D:\Program Files\NetBeans-12.2\netbeans\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 surefire:test"/>
     <property name="java.home" value="D:\Program Files\Java\jdk-15.0.2"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -60,48 +60,8 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.test.tester.ChuyenXeTester" name="testDeleteChuyenXe" time="0.089">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at org.junit.Assert.fail(Assert.java:86)
-	at org.junit.Assert.assertTrue(Assert.java:41)
-	at org.junit.Assert.assertTrue(Assert.java:52)
-	at com.test.tester.ChuyenXeTester.testDeleteChuyenXe(ChuyenXeTester.java:119)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
-	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-</failure>
-  </testcase>
-  <testcase classname="com.test.tester.ChuyenXeTester" name="testCateCounter" time="1.428"/>
-  <testcase classname="com.test.tester.ChuyenXeTester" name="testGetChuyenXe2" time="0.25"/>
-  <testcase classname="com.test.tester.ChuyenXeTester" name="testGetChuyenXe3" time="0.181"/>
-  <testcase classname="com.test.tester.ChuyenXeTester" name="testXeIdIsNotNull" time="1.12"/>
-  <testcase classname="com.test.tester.ChuyenXeTester" name="testGetChuyenByID" time="0.151"/>
+  <testcase classname="com.test.tester.TuyenDuongTester" name="testDeleteTuyenDuong" time="0.223"/>
+  <testcase classname="com.test.tester.TuyenDuongTester" name="testAddTuyenDuong" time="0.126"/>
+  <testcase classname="com.test.tester.TuyenDuongTester" name="testGetTuyenDuongByID" time="0.103"/>
+  <testcase classname="com.test.tester.TuyenDuongTester" name="testNameIsNotNull" time="0.316"/>
 </testsuite>

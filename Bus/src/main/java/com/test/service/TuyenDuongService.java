@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,5 +86,42 @@ public class TuyenDuongService {
             dsTuyenDuong.add(tuyenDuong);
         }
         return dsTuyenDuong;
+    }
+    
+    public boolean addTuyenDuong(TuyenDuong td) throws SQLException{
+        Connection conn = JdbcUtils.getConn();
+        conn.setAutoCommit(false);
+        String sql = "insert into tuyenduong(TuyenDuongName,FromTram,ToTram,Distance,TuyenDuongTime)"
+                + "values(?,?,?,?,?)";
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setString(1,td.getTramDi().getName() + "-" + td.getTramDen().getName());
+        stm.setInt(2, td.getTramDi().getTramId());
+        stm.setInt(3, td.getTramDen().getTramId());
+        stm.setFloat(4, td.getKhoangCach());
+        float t = td.getKhoangCach() / 48;
+        int temp = (int) t;
+        Time time = new Time(temp, (int) ((t -temp) * 60), 0);
+        stm.setTime(6,time);
+        int executeUpdate = stm.executeUpdate();
+        if(executeUpdate > 0){
+            conn.commit();
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean deleteTuyenDuong(int id) throws SQLException{
+        Connection conn = JdbcUtils.getConn();
+        String sql = "DELETE FROM tuyenduong where TuyenDuongID = ?";
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setInt(1, id);
+        conn.setAutoCommit(false);
+        int executeUpdate = stm.executeUpdate();
+        if(executeUpdate > 0)
+        {
+            conn.commit();
+            return true;
+        }
+        return false;
     }
 }

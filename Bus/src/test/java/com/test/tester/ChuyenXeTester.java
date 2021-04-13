@@ -18,6 +18,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import com.test.pojo.ChuyenXe;
 import com.test.service.ChuyenXeService;
+import com.test.service.TuyenDuongService;
+import com.test.service.XeService;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -25,7 +29,6 @@ import com.test.service.ChuyenXeService;
  */
 public class ChuyenXeTester {
     private static Connection conn;
-    
    @BeforeClass
     public static void setUp() throws SQLException {
         conn = JdbcUtils.getConn();
@@ -53,14 +56,10 @@ public class ChuyenXeTester {
         } catch (SQLException ex) {
             Logger.getLogger(ChuyenXeTester.class.getName()).log(Level.SEVERE, null, ex);
         }
-           
-       
     }
     
     @Test
-    public void testCateCounter() {
-       
-             
+    public void testCateCounter() {   
         try {
             ChuyenXeService service = new ChuyenXeService();
             List<ChuyenXe> cx = service.getChuyenXe();
@@ -69,46 +68,58 @@ public class ChuyenXeTester {
             Logger.getLogger(ChuyenXeTester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-//    @Test
-//     public void testGetChuyenXe2() throws SQLException{
-//       List <ChuyenXe> cx = ChuyenXeService.getChuyenXe(new Date(2020, 11,15 ), 1);
-//       Assert.assertTrue(cx.size() >= 1);
-//       for(ChuyenXe c: cx)
-//           Assert.assertNotNull(c);
-//    }
-//     @Test
-//    public void testGetChuyenXe3() throws SQLException{
-//       List <ChuyenXe> cx = ChuyenXeService.getChuyenXe(new Date(2020, 11,14 ), 1,1);
-//       Assert.assertTrue(cx.size() >= 1);
-//       for(ChuyenXe c: cx)
-//           Assert.assertNotNull(c.getChuyenXeID());
-//    }
-//    @Test
-//    public void testCheckChuyenXe() throws SQLException{
-//        Assert.assertEquals( 5, ChuyenXeService.CheckChuyenXe(2, new Date(2020, 11, 14)));
-//    }
-//    @Test
-//    public void testGetChuyenByID(){
-//        try {
-//            Assert.assertNotNull(ChuyenXeService.getChuyenByID(60));
-//            Assert.assertNull(ChuyenXeService.getChuyenByID(11133));
-//        } catch (SQLException ex) {
-//            Logger.getLogger(ChuyenXeTester.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
-//    @Test
-//    public void testSoVeDaBan(){
-//        Assert.assertEquals(2, ChuyenXeService.soVeDaBan(71));
-//    }
-//    @Test
-//    public void testDeleteChuyenXe(){
-//        try {
-//            Assert.assertFalse(ChuyenXeService.deleteChuyenXe(71));
-//            Assert.assertTrue(ChuyenXeService.deleteChuyenXe(60));
-//            
-//        } catch (SQLException ex) {
-//            Logger.getLogger(ChuyenXeTester.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        
-//    }
+    @Test
+    //Test getChuyenXe bằng ngày khời hành và tuyến đường
+    public void testGetChuyenXe2(){
+        try {
+            ChuyenXeService service = new ChuyenXeService();
+            List<ChuyenXe> dsChuyenXe;
+            Date d = Date.valueOf("2020-12-14");
+            dsChuyenXe = service.getChuyenXe(d, 1);
+            System.out.println(dsChuyenXe.size());
+            Assert.assertTrue(dsChuyenXe.size() >= 1);
+        } catch (SQLException ex) {
+            Logger.getLogger(ChuyenXeTester.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     
+    @Test
+    //Test getChuyenXe bằng ngày khởi hàn, trạm đi, trạm đến
+    public void testGetChuyenXe3(){
+        try {
+            ChuyenXeService service = new ChuyenXeService();
+            Date d = Date.valueOf("2020-12-14");
+            List<ChuyenXe> dsChuyenXe = service.getChuyenXe(d,1,2);
+            dsChuyenXe.forEach(cx ->{
+                System.out.println(cx);
+            });
+            System.out.println(dsChuyenXe.size());
+            Assert.assertTrue(dsChuyenXe.size() >= 1);
+        } catch (SQLException ex) {
+            Logger.getLogger(ChuyenXeTester.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } 
+    
+    @Test
+    public void testGetChuyenByID(){
+        try {
+            ChuyenXeService service = new ChuyenXeService();
+            System.out.println(service.getChuyenByID(61));
+            Assert.assertNotNull(service.getChuyenByID(61));
+            Assert.assertNull(service.getChuyenByID(11133));
+        } catch (SQLException ex) {
+            Logger.getLogger(ChuyenXeTester.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @Test
+    public void testDeleteChuyenXe(){
+        try {
+            ChuyenXeService service = new ChuyenXeService();
+            Assert.assertTrue(service.deleteChuyenXe(83));  
+        } catch (SQLException ex) {
+            Logger.getLogger(ChuyenXeTester.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
 }

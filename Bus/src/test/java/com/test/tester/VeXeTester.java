@@ -8,9 +8,12 @@ package com.test.tester;
 import com.test.service.JdbcUtils;
 import com.test.service.VeXeService;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.ResultSet;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -35,14 +38,6 @@ public class VeXeTester {
             Logger.getLogger(TramTester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    @Test
-    public void testKiemTraDat() throws SQLException{
-        Assert.assertTrue(VeXeService.kiemTraDat(20, 74));
-    }
     
-//    @Test
-//    public void testGetVeXeBySoGhe() throws SQLException{
-//        Assert.assertNotNull(VeXeService.getVeXeBySoGhe(20, 74));
-//         Assert.assertNull(VeXeService.getVeXeBySoGhe(20, 11));
-//    }
+
 }
