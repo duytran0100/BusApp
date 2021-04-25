@@ -1,16 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.test.bus.PrimaryController">
-   <children>
-      <Label text="Primary View" />
-      <Button fx:id="primaryButton" text="Switch to Secondary View" onAction="#switchToSecondary"/>
-   </children>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-</VBox>
+<BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="624.0" prefWidth="945.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.test.bus.PrimaryController">
+   <left>
+      <AnchorPane prefHeight="522.0" prefWidth="207.0" style="-fx-background-color: #6495ED;" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutY="76.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="203.0" style="-fx-background-color: #FF6347;" text="Trang Chủ" textAlignment="RIGHT" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="47.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/house.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button layoutY="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="202.0" style="-fx-background-color: #FFD700;" text="Đặt Vé" textAlignment="RIGHT" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="47.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/ticket.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <MenuButton layoutX="-1.0" layoutY="204.0" minWidth="56.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="204.0" style="-fx-background-color: #9ACD32;" text="Quản Lý" textFill="WHITE">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#loadQuanLyChuyenXeUI" text="Quản Lý Chuyến Xe" />
+                  <MenuItem mnemonicParsing="false" onAction="#loadQuanLyTramUI" text="Quản Lý Trạm" />
+                  <MenuItem mnemonicParsing="false" onAction="#loadQuanLyXeUI" text="Quản Lý Xe" />
+                  <MenuItem mnemonicParsing="false" onAction="#loadQuanLyTuyenDuongUI" text="Quản Lý Tuyến Đường" />
+               </items>
+               <graphic>
+                  <ImageView fitHeight="47.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/project-management.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </MenuButton>
+            <Button layoutX="-1.0" layoutY="270.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="204.0" style="-fx-background-color: gray;" text="Tài Khoản" textAlignment="RIGHT" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="47.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/quanly.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutY="334.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="202.0" style="-fx-background-color: #333366;" text="Đăng Nhập" textAlignment="RIGHT" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="47.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/login.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Pane layoutX="-2.0" prefHeight="74.0" prefWidth="207.0">
+               <children>
+                  <Label contentDisplay="CENTER" layoutX="1.0" prefHeight="80.0" prefWidth="207.0" style="-fx-alignment: center;" text="Bus App" textAlignment="JUSTIFY" textOverrun="CLIP">
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.9684210419654846" green="0.9397270679473877" blue="0.9397270679473877" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                     <font>
+                        <Font name="Times New Roman Bold" size="34.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children></AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

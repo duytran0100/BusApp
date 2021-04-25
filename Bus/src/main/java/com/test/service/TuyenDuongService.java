@@ -22,7 +22,7 @@ public class TuyenDuongService {
     public List<TuyenDuong> getTuyenDuong(String kw) throws SQLException{
         Connection conn = JdbcUtils.getConn();
         String sql = "select * from tuyenduong where"
-                + " TuyenDuongName like concat('%',?,'%')";
+                + " lower(TuyenDuongName) like lower(concat('%',?,'%'))";
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setString(1, kw);
         ResultSet rs = stm.executeQuery();
@@ -34,7 +34,6 @@ public class TuyenDuongService {
             tuyenDuong.setTuyenDuongName(rs.getString("TuyenDuongName"));
             tuyenDuong.setTramDi(tramService.getTramById(rs.getInt("FromTram")));
             tuyenDuong.setTramDen(tramService.getTramById(rs.getInt("ToTram")));
-            tuyenDuong.setTuyenKhuHoiId(rs.getInt("TuyenKhuHoiID"));
             tuyenDuong.setKhoangCach(rs.getFloat("Distance"));
             tuyenDuong.setThoiGianDuKien(rs.getTime("TuyenDuongTime"));
             
@@ -56,7 +55,6 @@ public class TuyenDuongService {
            tuyenDuong.setTuyenDuongName(rs.getString("TuyenDuongName"));
            tuyenDuong.setTramDi(tramService.getTramById(rs.getInt("FromTram")));
            tuyenDuong.setTramDen(tramService.getTramById(rs.getInt("ToTram")));
-           tuyenDuong.setTuyenKhuHoiId(rs.getInt("TuyenKhuHoiID"));
            tuyenDuong.setKhoangCach(rs.getFloat("Distance"));
            tuyenDuong.setThoiGianDuKien(rs.getTime("TuyenDuongTime"));
            
@@ -79,7 +77,6 @@ public class TuyenDuongService {
             tuyenDuong.setTuyenDuongName(rs.getString("TuyenDuongName"));
             tuyenDuong.setTramDi(tramService.getTramById(rs.getInt("FromTram")));
             tuyenDuong.setTramDen(tramService.getTramById(rs.getInt("ToTram")));
-            tuyenDuong.setTuyenKhuHoiId(rs.getInt("TuyenKhuHoiID"));
             tuyenDuong.setKhoangCach(rs.getFloat("Distance"));
             tuyenDuong.setThoiGianDuKien(rs.getTime("TuyenDuongTime"));
             
@@ -101,7 +98,7 @@ public class TuyenDuongService {
         float t = td.getKhoangCach() / 48;
         int temp = (int) t;
         Time time = new Time(temp, (int) ((t -temp) * 60), 0);
-        stm.setTime(6,time);
+        stm.setTime(5,time);
         int executeUpdate = stm.executeUpdate();
         if(executeUpdate > 0){
             conn.commit();

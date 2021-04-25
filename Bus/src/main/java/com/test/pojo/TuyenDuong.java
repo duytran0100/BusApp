@@ -18,7 +18,6 @@ public class TuyenDuong {
     private Tram tramDen;
     private float khoangCach;
     private Time thoiGianDuKien;
-    private int tuyenKhuHoiId;
 
     /**
      * @return the tuyenDuongId
@@ -104,23 +103,9 @@ public class TuyenDuong {
         this.thoiGianDuKien = thoiGianDuKien;
     }
 
-    /**
-     * @return the tuyenKhuHoiId
-     */
-    public int getTuyenKhuHoiId() {
-        return tuyenKhuHoiId;
-    }
-
-    /**
-     * @param tuyenKhuHoiId the tuyenKhuHoiId to set
-     */
-    public void setTuyenKhuHoiId(int tuyenKhuHoiId) {
-        this.tuyenKhuHoiId = tuyenKhuHoiId;
-    }
-    
      @Override
     public String toString() {
-        String result = String.format("%d.%s(%s-%s)", this.tuyenDuongId,this.tuyenDuongName,this.tramDi.getName(),this.tramDen.getName());
+        String result = String.format("%s(%s-%s)",this.tuyenDuongName,this.tramDi.getName(),this.tramDen.getName());
         return result;
     }
 }

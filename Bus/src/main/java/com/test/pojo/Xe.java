@@ -17,7 +17,7 @@ public class Xe {
     private int soGhe;
     private String loaiXe;
     private Date namSX;
-    private int tramId;
+    private Tram tram;
 
     /**
      * @return the xeId
@@ -90,22 +90,22 @@ public class Xe {
     }
 
     /**
-     * @return the tramId
+     * @return the tram
      */
-    public int getTramId() {
-        return tramId;
+    public Tram getTram() {
+        return tram;
     }
 
     /**
-     * @param tramId the tramId to set
+     * @param tram the tram to set
      */
-    public void setTramId(int tramId) {
-        this.tramId = tramId;
+    public void setTram(Tram tram) {
+        this.tram = tram;
     }
-    
+       
     @Override
     public String toString() {
-        String result = String.format("%d.%s(%s.%d)", this.xeId,this.bienSo,this.loaiXe,this.soGhe);
+        String result = String.format("%s (%s)",this.bienSo, this.loaiXe);
         return result;
     }
 }

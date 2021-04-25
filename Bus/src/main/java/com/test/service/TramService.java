@@ -22,12 +22,9 @@ import java.util.logging.Logger;
 public class TramService {
     public List<Tram> getTram(String kw) throws SQLException{
         Connection conn = JdbcUtils.getConn();
-        String sql = "Select * from tram";
-        if(kw != null && !kw.trim().isEmpty())
-            sql+="where Name like concat('%',?,'%')";
+        String sql = "Select * from tram where lower(Name) like lower(concat('%',?,'%'))";
         PreparedStatement stm = conn.prepareStatement(sql);
-        if(kw != null && !kw.trim().isEmpty())
-            stm.setString(1,kw.trim());
+        stm.setString(1, kw);
         ResultSet rs = stm.executeQuery();
         List<Tram> tram = new ArrayList<>();
         while(rs.next()){
@@ -48,9 +45,12 @@ public class TramService {
             stm.setString(1,tram.getName());
             stm.setString(2, tram.getDiaChi());
             
-            
             int excuteUpdate = stm.executeUpdate();
-            return excuteUpdate > 0;
+            
+            if(excuteUpdate > 0){
+                conn.commit();
+                return true;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(TramService.class.getName()).log(Level.SEVERE, null, ex);
         }

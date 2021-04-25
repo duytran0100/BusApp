@@ -58,7 +58,7 @@ public class Tram {
     
     @Override
     public String toString() {
-        String result = String.format("%d.%s(%s)", this.tramId,this.name,this.diaChi);
+        String result = String.format("%s (%s)",this.name,this.diaChi);
         return result;
     }
 }

@@ -1,6 +1,8 @@
+com\test\tester\NhanVienTester.class
 com\test\tester\VeXeTester.class
 com\test\tester\XeTester.class
 com\test\tester\TaiKhoanTester.class
 com\test\tester\TramTester.class
+com\test\tester\KhachHangTester.class
 com\test\tester\TuyenDuongTester.class
 com\test\tester\ChuyenXeTester.class

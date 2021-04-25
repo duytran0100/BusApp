@@ -118,9 +118,10 @@ public class ChuyenXeService {
             stm.setDate(5, (java.sql.Date) c.getNgayKhoiHanh());
             stm.setInt(6, c.getSoVe());
             int executeUpdate = stm.executeUpdate();
-            conn.commit();
-            return executeUpdate > 0;
-            
+            if (executeUpdate > 0){
+                conn.commit();
+                return true;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ChuyenXeService.class.getName()).log(Level.SEVERE, null, ex);
         }

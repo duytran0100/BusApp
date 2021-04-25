@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="428.0" prefWidth="441.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.test.bus.ThemChuyenXeController">
+   <children>
+      <SplitPane dividerPositions="0.11069418386491559" layoutX="102.0" layoutY="14.0" orientation="VERTICAL" prefHeight="428.0" prefWidth="410.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label layoutX="150.0" layoutY="14.0" prefHeight="44.0" prefWidth="408.8" style="-fx-alignment: center; -fx-background-color: #32CD32;" text="Thêm Chuyến Xe" textFill="#f7f4f4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="Times New Roman Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <GridPane alignment="CENTER" layoutX="12.0" layoutY="-14.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="376.0" prefWidth="440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="198.39996337890625" minWidth="10.0" prefWidth="162.4000244140625" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="309.60003662109375" minWidth="10.0" prefWidth="257.5999755859375" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="120.59998168945313" minHeight="10.0" prefHeight="46.4" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="120.59998168945313" minHeight="10.0" prefHeight="44.00000000000001" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="120.59998168945313" minHeight="10.0" prefHeight="42.400000000000006" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="120.59998168945313" minHeight="10.0" prefHeight="51.19999389648436" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="120.59998168945313" minHeight="10.0" prefHeight="51.19999389648436" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="170.39998474121094" minHeight="10.0" prefHeight="47.199981689453125" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="181.59996032714844" minHeight="0.0" prefHeight="51.399987792968716" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="186.39998474121091" minHeight="10.0" prefHeight="93.60003356933589" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label prefHeight="20.0" prefWidth="122.0" text="Tuyến Đường:" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="20.0" prefWidth="122.0" text="Xe:" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="20.0" prefWidth="122.0" text="Số Vé:" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="20.0" prefWidth="158.0" text="Ngày Khởi Hành:" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="20.0" prefWidth="126.0" text="Giờ Khởi Hành:" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtSoVe" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <DatePicker fx:id="dpNgayKhoiHanh" prefHeight="26.0" prefWidth="278.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Button mnemonicParsing="false" onAction="#ThemHandler" prefHeight="44.0" prefWidth="124.0" style="-fx-background-color: #32CD32;" text="Thêm" textFill="#f4f3f3" GridPane.rowIndex="7">
+                           <font>
+                              <Font name="Times New Roman Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="30.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7">
+                           <image>
+                              <Image url="@../../images/add.png" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="20.0" prefWidth="122.0" text="Giá Tiền" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtGiaTien" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <children>
+                              <Spinner fx:id="hoursSpinner" prefHeight="26.0" prefWidth="89.0" />
+                              <Label text=":">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Spinner fx:id="minutesSpinner" prefHeight="26.0" prefWidth="73.0" />
+                           </children>
+                        </HBox>
+                        <ChoiceBox fx:id="cbTuyenDuong" prefHeight="26.0" prefWidth="256.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ChoiceBox fx:id="cbXe" prefHeight="26.0" prefWidth="256.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                     </padding>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

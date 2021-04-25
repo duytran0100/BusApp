@@ -23,11 +23,12 @@ import java.util.logging.Logger;
 public class XeService {
     public List<Xe> getXe(String kw) throws SQLException{
         Connection conn = JdbcUtils.getConn();
-        String sql = "select * from xe where BienSo like concat('%',?,'%')";
+        String sql = "select * from xe where lower(BienSo) like lower(concat('%',?,'%'))";
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setString(1, kw);
         ResultSet rs = stm.executeQuery();
         List<Xe> dsXe = new ArrayList<>();
+        TramService tService = new TramService();
         while(rs.next()){
             Xe xe = new Xe();
             xe.setXeId(rs.getInt("XeID"));
@@ -35,10 +36,20 @@ public class XeService {
             xe.setLoaiXe(rs.getString("LoaiXe"));
             xe.setNamSX(rs.getDate("NamSX"));
             xe.setSoGhe(rs.getInt("SoGhe"));
-            xe.setTramId(rs.getInt("TramID"));
+            xe.setTram(tService.getTramById(rs.getInt("TramID")));
             dsXe.add(xe);
         }
         return dsXe;
+    }
+    
+    public boolean checkBienSo(String kw) throws SQLException{
+        Connection conn = JdbcUtils.getConn();
+        String sql = "select * from xe where BienSo like ?";
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setString(1, kw);
+        ResultSet rs = stm.executeQuery();
+        
+        return rs.next();
     }
     
     public boolean addXe(Xe xe){
@@ -53,11 +64,14 @@ public class XeService {
             stm.setInt(2,xe.getSoGhe());
             stm.setString(3, xe.getLoaiXe());
             stm.setDate(4, (java.sql.Date)xe.getNamSX());
-            stm.setInt(5,xe.getTramId());
+            stm.setInt(5,xe.getTram().getTramId());
             
             int excuteUpdate = stm.executeUpdate();
             
-            return excuteUpdate > 0;
+            if (excuteUpdate > 0){
+                conn.commit();
+                return true;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(XeService.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -86,13 +100,14 @@ public class XeService {
             PreparedStatement stm = conn.prepareStatement(sql);
             stm.setInt(1, id);
             ResultSet rs = stm.executeQuery();
+            TramService tService = new TramService();
             if (rs.next()){
                 Xe x = new Xe();
                 x.setXeId(rs.getInt("XeID"));
                 x.setBienSo(rs.getString("BienSo"));
                 x.setSoGhe(rs.getInt("SoGhe"));
                 x.setLoaiXe(rs.getString("LoaiXe"));
-                x.setTramId(rs.getInt("TramID"));
+                x.setTram(tService.getTramById(rs.getInt("TramID")));
                 x.setNamSX(rs.getDate("NamSX"));
                 return x;
             }
