@@ -9,15 +9,17 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
-public class PrimaryController {
+public class PrimaryController implements Initializable{
     @FXML BorderPane rootPane;
-    
+
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
-      
     }   
     
     /**
@@ -65,6 +67,23 @@ public class PrimaryController {
     public void loadQuanLyChuyenXeUI(ActionEvent e){
         try {
             loadUI("quanlychuyenxe.fxml");
+        } catch (IOException ex) {
+            Logger.getLogger(PrimaryController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void loadLoginUI(ActionEvent e){
+        try {
+            loadUI("login.fxml");
+        } catch (IOException ex) {
+            Logger.getLogger(PrimaryController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void logout(ActionEvent e){
+        try {
+            App.currentUser = null;
+            App.setRoot("login");
         } catch (IOException ex) {
             Logger.getLogger(PrimaryController.class.getName()).log(Level.SEVERE, null, ex);
         }

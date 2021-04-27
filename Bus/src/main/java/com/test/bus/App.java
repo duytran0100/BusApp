@@ -1,5 +1,6 @@
 package com.test.bus;
 
+import com.test.pojo.TaiKhoan;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,10 +15,11 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    public static TaiKhoan currentUser;
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"));
+        scene = new Scene(loadFXML("login"));
         stage.setScene(scene);
         stage.setTitle("Quản Lý Đặt Xe");
         stage.show();

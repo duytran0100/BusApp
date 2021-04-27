@@ -71,7 +71,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutY="334.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="202.0" style="-fx-background-color: #333366;" text="Đăng Nhập" textAlignment="RIGHT" textFill="WHITE">
+            <Button layoutY="334.0" mnemonicParsing="false" onAction="#logout" prefHeight="60.0" prefWidth="202.0" style="-fx-background-color: #333366;" text="Đăng Xuất" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
