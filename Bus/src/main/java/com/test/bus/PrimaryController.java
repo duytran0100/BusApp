@@ -37,7 +37,7 @@ public class PrimaryController implements Initializable{
     public void loadUI(String UI) throws IOException{
        
         AnchorPane pane = FXMLLoader.load(getClass().getResource(UI));
-        rootPane.setCenter(pane);    
+        rootPane.setCenter(pane);
     }
 
     public void loadQuanLyXeUI(ActionEvent e){
@@ -72,13 +72,14 @@ public class PrimaryController implements Initializable{
         }
     }
     
-    public void loadLoginUI(ActionEvent e){
+    public void loadQuanLyKhachHangUI(ActionEvent e){
         try {
-            loadUI("login.fxml");
+            loadUI("quanlykhachhang.fxml");
         } catch (IOException ex) {
             Logger.getLogger(PrimaryController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
     
     public void logout(ActionEvent e){
         try {
