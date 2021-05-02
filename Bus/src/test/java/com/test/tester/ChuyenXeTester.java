@@ -116,7 +116,7 @@ public class ChuyenXeTester {
     public void testDeleteChuyenXe(){
         try {
             ChuyenXeService service = new ChuyenXeService();
-            Assert.assertTrue(service.deleteChuyenXe(83));  
+            Assert.assertTrue(service.deleteChuyenXe(79));  
         } catch (SQLException ex) {
             Logger.getLogger(ChuyenXeTester.class.getName()).log(Level.SEVERE, null, ex);
         }

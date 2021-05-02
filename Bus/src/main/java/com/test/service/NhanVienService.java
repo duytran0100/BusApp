@@ -117,7 +117,28 @@ public class NhanVienService {
         if (rs.next()){
             NhanVien nv = new NhanVien();
             
-            nv.setNhanVienId(rs.getInt("NhanVien"));
+            nv.setNhanVienId(rs.getInt("NhanVienID"));
+            nv.setHoDem(rs.getString("HoDem"));
+            nv.setTen(rs.getString("Ten"));
+            nv.setEmail(rs.getString("Email"));
+            nv.setSdt(rs.getString("SDT"));
+            nv.setDiaChi(rs.getString("DiaChi"));
+            
+            return nv;
+        }
+        return null;
+    }
+    
+        public NhanVien getNhanVienByTaiKhoanID(int taiKhoanId) throws SQLException{
+        Connection conn = JdbcUtils.getConn();
+        String sql = "select * from nhanvien where TaiKhoanID = ?";
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setInt(1, taiKhoanId);
+        ResultSet rs = stm.executeQuery();
+        if (rs.next()){
+            NhanVien nv = new NhanVien();
+            
+            nv.setNhanVienId(rs.getInt("NhanVienID"));
             nv.setHoDem(rs.getString("HoDem"));
             nv.setTen(rs.getString("Ten"));
             nv.setEmail(rs.getString("Email"));

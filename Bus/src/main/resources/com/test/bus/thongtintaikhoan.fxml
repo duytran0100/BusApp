@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="603.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.test.bus.TaiKhoanController">
+   <children>
+      <AnchorPane layoutX="-1.0" layoutY="-1.0" prefHeight="75.0" prefWidth="749.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.39999999999997726">
+         <children>
+            <Label prefHeight="75.0" prefWidth="714.0" style="-fx-alignment: center; -fx-background-color: #FFD700;" text="Thông Tin Tài Khoản" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font name="Times New Roman Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="-1.0" layoutY="69.0" prefHeight="529.0" prefWidth="750.0">
+         <children>
+            <Label layoutX="189.0" layoutY="97.0" prefHeight="26.0" prefWidth="102.0" text="Họ Đệm">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtHoDem" layoutX="301.0" layoutY="96.0" prefHeight="26.0" prefWidth="227.0">
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="190.0" layoutY="145.0" prefHeight="26.0" prefWidth="102.0" text="Tên">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtTen" layoutX="302.0" layoutY="144.0" prefHeight="26.0" prefWidth="227.0">
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font>
+            </TextField>
+            <PasswordField disable="true" editable="false" layoutX="301.0" layoutY="326.0" prefHeight="26.0" prefWidth="227.0" text="123456789">
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font>
+            </PasswordField>
+            <Button layoutX="329.0" layoutY="398.0" mnemonicParsing="false" onAction="#updateThongTin" prefHeight="40.0" prefWidth="140.0" text="Lưu Thông Tin">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="543.0" layoutY="325.0" mnemonicParsing="false" onAction="#showChangePassword" prefHeight="26.0" prefWidth="102.0" text="Đổi mật khẩu">
+               <font>
+                  <Font name="Times New Roman" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Label layoutX="188.0" layoutY="262.0" prefHeight="26.0" prefWidth="102.0" text="Email">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtEmail" layoutX="300.0" layoutY="261.0" prefHeight="26.0" prefWidth="227.0">
+         <font>
+            <Font name="Times New Roman" size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="189.0" layoutY="308.0" prefHeight="26.0" prefWidth="102.0" text="Số điện thoại">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtSDT" layoutX="301.0" layoutY="307.0" prefHeight="26.0" prefWidth="227.0">
+         <font>
+            <Font name="Times New Roman" size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="188.0" layoutY="352.0" prefHeight="26.0" prefWidth="102.0" text="Địa chỉ">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtDiaChi" layoutX="300.0" layoutY="351.0" prefHeight="26.0" prefWidth="227.0">
+         <font>
+            <Font name="Times New Roman" size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="188.0" layoutY="393.0" prefHeight="26.0" prefWidth="102.0" text="Mật khẩu">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

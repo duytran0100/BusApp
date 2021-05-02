@@ -116,4 +116,28 @@ public class XeService {
         }
         return null;
     }
+    
+        public Xe getXeByBienSo(String bienSo){
+        try {
+            Connection conn = JdbcUtils.getConn();
+            String sql = "Select * from xe where BienSo = ?";
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setString(1, bienSo);
+            ResultSet rs = stm.executeQuery();
+            TramService tService = new TramService();
+            if (rs.next()){
+                Xe x = new Xe();
+                x.setXeId(rs.getInt("XeID"));
+                x.setBienSo(rs.getString("BienSo"));
+                x.setSoGhe(rs.getInt("SoGhe"));
+                x.setLoaiXe(rs.getString("LoaiXe"));
+                x.setTram(tService.getTramById(rs.getInt("TramID")));
+                x.setNamSX(rs.getDate("NamSX"));
+                return x;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(XeService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

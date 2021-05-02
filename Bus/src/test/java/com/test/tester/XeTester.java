@@ -7,6 +7,7 @@ package com.test.tester;
 
 import com.test.pojo.Xe;
 import com.test.service.JdbcUtils;
+import com.test.service.TramService;
 import com.test.service.XeService;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -72,5 +73,29 @@ public class XeTester {
         Assert.assertNotNull(x.getBienSo());
         Assert.assertNotEquals("", x.getBienSo().trim());
         Assert.assertNotNull(x.getSoGhe());
+    }
+    
+    @Test
+    public void testAddXe(){
+        XeService xeService = new XeService();
+        Xe xe = new Xe();
+        TramService tramService = new TramService();
+        xe.setBienSo("Xe Test");
+        xe.setLoaiXe("Test");
+        xe.setSoGhe(25);
+        xe.setTram(tramService.getTramById(1));
+        boolean kq = xeService.addXe(xe);
+        
+        Assert.assertTrue(kq);
+    }
+    
+    @Test
+    public void testDeleteXe(){
+        XeService xeService = new XeService();
+        Xe xe = xeService.getXeByBienSo("Xe Test");
+        
+        boolean kq = xeService.deleteXe(xe.getXeId());
+        
+        Assert.assertTrue(kq);
     }
 }

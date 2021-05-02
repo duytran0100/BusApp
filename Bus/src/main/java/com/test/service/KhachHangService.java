@@ -63,8 +63,27 @@ public class KhachHangService {
     }
     
     public boolean addKhachHang(KhachHang kh) throws SQLException{
-        if (this.checkKhachHang(kh.getTaiKhoan().getTaiKhoanId()))
-            return false;
+        
+        Connection conn = JdbcUtils.getConn();
+        conn.setAutoCommit(false);
+        String sql = "Insert into khachhang(HoDem,Ten,Email,SDT,DiaChi)"
+                + "values(?,?,?,?,?)";
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setString(1, kh.getHoDem());
+        stm.setString(2, kh.getTen());
+        stm.setString(3, kh.getEmail());
+        stm.setString(4, kh.getSdt());
+        stm.setString(5, kh.getDiaChi());
+        
+        if (stm.executeUpdate() > 0){
+            conn.commit();
+            return true;
+        }
+        
+        return false;
+    }
+    
+        public boolean addKhachHang(KhachHang kh, int taiKhoanID) throws SQLException{
         
         Connection conn = JdbcUtils.getConn();
         conn.setAutoCommit(false);
@@ -76,7 +95,7 @@ public class KhachHangService {
         stm.setString(3, kh.getEmail());
         stm.setString(4, kh.getSdt());
         stm.setString(5, kh.getDiaChi());
-        stm.setInt(6,kh.getTaiKhoan().getTaiKhoanId());
+        stm.setInt(6, taiKhoanID);
         
         if (stm.executeUpdate() > 0){
             conn.commit();
@@ -114,6 +133,27 @@ public class KhachHangService {
         String sql = "select * from khachhang where SDT = ?";
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setString(1, phone);
+        ResultSet rs = stm.executeQuery();
+        if (rs.next()){
+            KhachHang kh = new KhachHang();
+            
+            kh.setKhachHangId(rs.getInt("KhachHangID"));
+            kh.setHoDem(rs.getString("HoDem"));
+            kh.setTen(rs.getString("Ten"));
+            kh.setEmail(rs.getString("Email"));
+            kh.setSdt(rs.getString("SDT"));
+            kh.setDiaChi(rs.getString("DiaChi"));
+            
+            return kh;
+        }
+        return null;
+    }
+    
+        public KhachHang getKhachHangByTaiKhoanID(int taiKhoanId) throws SQLException{
+        Connection conn = JdbcUtils.getConn();
+        String sql = "select * from khachhang where TaiKhoanID = ?";
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setInt(1, taiKhoanId);
         ResultSet rs = stm.executeQuery();
         if (rs.next()){
             KhachHang kh = new KhachHang();

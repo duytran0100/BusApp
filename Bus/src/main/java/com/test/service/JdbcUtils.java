@@ -26,7 +26,7 @@ public class JdbcUtils {
     }
     
     public static Connection getConn() throws SQLException{
-        return DriverManager.getConnection("jdbc:mysql://localhost/appoubusdb"
+        return DriverManager.getConnection("jdbc:mysql://localhost/busappdb"
                 ,"root","12345678");
     }
 }

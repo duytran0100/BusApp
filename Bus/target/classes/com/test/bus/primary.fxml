@@ -29,7 +29,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button layoutY="140.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="202.0" style="-fx-background-color: #FFD700;" text="Đặt Vé" textAlignment="RIGHT" textFill="WHITE">
+            <Button layoutY="140.0" mnemonicParsing="false" onAction="#loadTimVeUI" prefHeight="60.0" prefWidth="202.0" style="-fx-background-color: #FFD700;" text="Đặt Vé" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -41,7 +41,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <MenuButton layoutX="-1.0" layoutY="204.0" minWidth="56.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="204.0" style="-fx-background-color: #9ACD32;" text="Quản Lý" textFill="WHITE">
+            <MenuButton fx:id="btQuanLy" layoutX="-1.0" layoutY="204.0" minWidth="56.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="204.0" style="-fx-background-color: #9ACD32;" text="Quản Lý" textFill="WHITE">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#loadQuanLyChuyenXeUI" text="Quản Lý Chuyến Xe" />
                   <MenuItem mnemonicParsing="false" onAction="#loadQuanLyTramUI" text="Quản Lý Trạm" />
@@ -60,7 +60,7 @@
                   <Font name="System Bold" size="21.0" />
                </font>
             </MenuButton>
-            <Button layoutX="-1.0" layoutY="270.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="204.0" style="-fx-background-color: gray;" text="Tài Khoản" textAlignment="RIGHT" textFill="WHITE">
+            <Button layoutX="-1.0" layoutY="270.0" mnemonicParsing="false" onAction="#loadTaiKhoanUI" prefHeight="60.0" prefWidth="204.0" style="-fx-background-color: gray;" text="Tài Khoản" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

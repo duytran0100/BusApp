@@ -11,15 +11,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 public class PrimaryController implements Initializable{
     @FXML BorderPane rootPane;
-
+    @FXML MenuButton btQuanLy;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        if(App.currentUser.getLoaiTaiKhoan() == 0){
+            btQuanLy.disableProperty().set(true);
+        }
     }   
     
     /**
@@ -75,6 +80,22 @@ public class PrimaryController implements Initializable{
     public void loadQuanLyKhachHangUI(ActionEvent e){
         try {
             loadUI("quanlykhachhang.fxml");
+        } catch (IOException ex) {
+            Logger.getLogger(PrimaryController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void loadTaiKhoanUI(ActionEvent e){
+        try {
+            loadUI("thongtintaikhoan.fxml");
+        } catch (IOException ex) {
+            Logger.getLogger(PrimaryController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void loadTimVeUI(ActionEvent e){
+        try {
+            loadUI("timve.fxml");
         } catch (IOException ex) {
             Logger.getLogger(PrimaryController.class.getName()).log(Level.SEVERE, null, ex);
         }

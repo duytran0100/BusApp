@@ -50,11 +50,10 @@ public class KhachHangTester {
             KhachHang kh = new KhachHang();
             kh.setHoDem("Tran Quoc");
             kh.setTen("Duy");
-            kh.setEmail("duytran000@gmail.com");
-            kh.setSdt("0909792905");
-            kh.setTaiKhoan(tkService.getTaiKhoanById(1));
+            kh.setEmail("duytran0100@gmail.com");
+            kh.setSdt("0909792908");
             boolean kq = khService.addKhachHang(kh);
-            Assert.assertFalse(kq);
+            Assert.assertTrue(kq);
         } catch (SQLException ex) {
             Logger.getLogger(KhachHangTester.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -73,7 +72,7 @@ public class KhachHangTester {
     @Test
     public void testGetKhachHangByPhone(){
         try {
-            KhachHang kh = khService.getKhachHangByPhone("0909792905");
+            KhachHang kh = khService.getKhachHangByPhone("0909792901");
             Assert.assertNotNull(kh);
         } catch (SQLException ex) {
             Logger.getLogger(KhachHangTester.class.getName()).log(Level.SEVERE, null, ex);

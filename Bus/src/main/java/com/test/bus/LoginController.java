@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
@@ -19,9 +21,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -34,7 +37,11 @@ public class LoginController implements Initializable{
     
     @FXML TextField txtUserName;
     @FXML TextField txtPassWord;
+    @FXML Button btLogin;
+    @FXML TextField txtTimer;
+            
     TaiKhoanService tkService;
+    private int count;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -42,6 +49,8 @@ public class LoginController implements Initializable{
         txtUserName.setText("");
         txtPassWord.setText("");
         txtUserName.requestFocus();
+        txtTimer.visibleProperty().set(false);
+        count = 4;
     }
     
     public void Login(ActionEvent e){
@@ -59,8 +68,6 @@ public class LoginController implements Initializable{
                 if(tkService.checkLogin(userName, passWord)){
                     App.currentUser = tkService.getTaiKhoanByUserName(userName);
                     alert.setContentText("Đăng nhập thành công");
-                    txtUserName.setText("");
-                    txtPassWord.setText("");
                     
                     try {
                         App.setRoot("primary");
@@ -70,15 +77,63 @@ public class LoginController implements Initializable{
                 }//end if
                 else{
                     alert.setContentText("Sai tên tài khoản hoặc mật khẩu");
-                    txtUserName.setText("");
+                    
                     txtPassWord.setText("");
                     txtUserName.requestFocus();
+                    
+                    count -= 1;
+                    
+                    if (count == 0){
+                        alert.setContentText("Bạn đã bị khóa đăng nhập trong 240 giây");
+                        btLogin.disableProperty().set(true);
+                        txtTimer.visibleProperty().set(true);
+                        Countdown();
+                    }
+                    
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
         alert.show();
+        
+    }
+    
+    private void Countdown(){
+        Timer timer = new Timer();
+
+        timer.schedule(new TimerTask() {
+            int seconds = 240;
+            @Override
+            public void run() {
+                txtTimer.setText(String.valueOf(seconds));
+                
+                if (seconds == 0){
+                    timer.cancel();
+                    txtTimer.visibleProperty().set(false);
+                    btLogin.disableProperty().set(false);
+                }
+                
+                seconds -=1;
+            }
+        },0,1000);
+    }
+    
+    public void showDangKi(ActionEvent e){
+        try {
+            AnchorPane dangki = FXMLLoader.load(getClass().getResource("dangki.fxml"));
+            Scene scene = new Scene(dangki);
+            
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setTitle("Chức năng đăng kí");
+            stage.setScene(scene);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.showAndWait();
+        } catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

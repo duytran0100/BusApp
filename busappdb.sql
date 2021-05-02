@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
--- Host: localhost    Database: appoubusdb
+-- Host: localhost    Database: busappdb
 -- ------------------------------------------------------
 -- Server version	8.0.22
 
@@ -29,7 +29,7 @@ CREATE TABLE `banggia` (
   PRIMARY KEY (`BangGiaID`),
   KEY `fk_banggia_tuyenduong_idx` (`TuyenDuongID`),
   CONSTRAINT `fk_banggia_tuyenduong` FOREIGN KEY (`TuyenDuongID`) REFERENCES `tuyenduong` (`TuyenDuongID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `banggia` (
 
 LOCK TABLES `banggia` WRITE;
 /*!40000 ALTER TABLE `banggia` DISABLE KEYS */;
-INSERT INTO `banggia` VALUES (1,1,100000),(2,12,100000),(3,15,150000),(4,1001,150000);
+INSERT INTO `banggia` VALUES (1,1,100000),(2,2,100000),(3,3,150000),(4,4,250000),(5,5,250000);
 /*!40000 ALTER TABLE `banggia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,7 +62,7 @@ CREATE TABLE `chuyenxe` (
   KEY `fk_chuyenxe_id_tuyenduong_idx` (`TuyenDuongID`),
   CONSTRAINT `fk_chuyenxe_id_tuyenduong` FOREIGN KEY (`TuyenDuongID`) REFERENCES `tuyenduong` (`TuyenDuongID`),
   CONSTRAINT `fk_chuyenxe_id_xe` FOREIGN KEY (`XeID`) REFERENCES `xe` (`XeID`)
-) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,7 +71,7 @@ CREATE TABLE `chuyenxe` (
 
 LOCK TABLES `chuyenxe` WRITE;
 /*!40000 ALTER TABLE `chuyenxe` DISABLE KEYS */;
-INSERT INTO `chuyenxe` VALUES (61,'05:30:00',1,100000,1001,'2020-12-14',39),(62,'08:00:00',1,100000,1,'2020-12-14',39),(63,'10:30:00',1,100000,1001,'2020-12-14',39),(65,'22:30:00',1,100000,1001,'2020-12-14',39),(66,'03:00:00',2,150000,1001,'2020-12-15',39),(67,'05:30:00',2,150000,1,'2020-12-15',39),(68,'08:00:00',2,150000,1001,'2020-12-15',39),(69,'10:30:00',2,150000,1,'2020-12-15',39),(70,'13:00:00',2,150000,1001,'2020-12-15',39),(72,'03:00:00',3,100000,1,'2020-12-16',39),(73,'05:30:00',3,100000,1001,'2020-12-16',39),(74,'08:00:00',3,100000,1,'2020-12-16',39),(76,'13:00:00',3,100000,1,'2020-12-16',39),(77,'15:30:00',3,100000,1001,'2020-12-16',39),(78,'03:00:00',1,900000,1,'2020-12-24',39),(79,'05:30:00',1,900000,1001,'2020-12-24',39),(80,'08:00:00',1,900000,1,'2020-12-24',39),(81,'10:30:00',1,900000,1001,'2020-12-24',39),(82,'13:00:00',1,900000,1,'2020-12-24',39);
+INSERT INTO `chuyenxe` VALUES (1,'07:30:00',1,100000,1,'2021-05-18',30),(2,'09:00:00',1,100000,2,'2021-05-18',30),(3,'09:00:00',2,150000,3,'2021-05-18',30),(4,'13:00:00',4,250000,5,'2021-05-18',25);
 /*!40000 ALTER TABLE `chuyenxe` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,16 +84,16 @@ DROP TABLE IF EXISTS `khachhang`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `khachhang` (
   `KhachHangID` int NOT NULL AUTO_INCREMENT,
-  `HoDem` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Ten` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Email` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `SDT` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `DiaChi` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `TaiKhoanID` int NOT NULL,
+  `HoDem` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Ten` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Email` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `SDT` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `DiaChi` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `TaiKhoanID` int DEFAULT NULL,
   PRIMARY KEY (`KhachHangID`),
   KEY `fk_khachhang_taikhoan_idx` (`TaiKhoanID`),
   CONSTRAINT `fk_khachhang_taikhoan` FOREIGN KEY (`TaiKhoanID`) REFERENCES `taikhoan` (`TaiKhoanID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,7 +102,7 @@ CREATE TABLE `khachhang` (
 
 LOCK TABLES `khachhang` WRITE;
 /*!40000 ALTER TABLE `khachhang` DISABLE KEYS */;
-INSERT INTO `khachhang` VALUES (2,'Tran Quoc','Duy','duytran0001@gmail.com','0909792905','Tay Ninh',1);
+INSERT INTO `khachhang` VALUES (1,'Trần Quốc','Duy','duytran0100@gmail.com','0909792204','Tây Ninh',1);
 /*!40000 ALTER TABLE `khachhang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,11 +115,11 @@ DROP TABLE IF EXISTS `nhanvien`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `nhanvien` (
   `NhanVienID` int NOT NULL AUTO_INCREMENT,
-  `HoDem` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Ten` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Email` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `SDT` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `DiaChi` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `HoDem` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Ten` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Email` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `SDT` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `DiaChi` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `TaiKhoanID` int NOT NULL,
   PRIMARY KEY (`NhanVienID`),
   KEY `fk_nhanvien_taikhoan_idx` (`TaiKhoanID`),
@@ -133,7 +133,7 @@ CREATE TABLE `nhanvien` (
 
 LOCK TABLES `nhanvien` WRITE;
 /*!40000 ALTER TABLE `nhanvien` DISABLE KEYS */;
-INSERT INTO `nhanvien` VALUES (1,'Tran','Duy','duytran0100@gmail.com','0886933092','Binh Duong',7);
+INSERT INTO `nhanvien` VALUES (1,'Duy','Trần','1851050019duy@ou.edu.vn','0909792909','TPHCM',2);
 /*!40000 ALTER TABLE `nhanvien` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,11 +146,11 @@ DROP TABLE IF EXISTS `taikhoan`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `taikhoan` (
   `TaiKhoanID` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `LoaiTaiKhoan` int NOT NULL,
   PRIMARY KEY (`TaiKhoanID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -159,7 +159,7 @@ CREATE TABLE `taikhoan` (
 
 LOCK TABLES `taikhoan` WRITE;
 /*!40000 ALTER TABLE `taikhoan` DISABLE KEYS */;
-INSERT INTO `taikhoan` VALUES (1,'duytran0100','fcea920f7412b5da7be0cf42b8c93759',0),(7,'nv1','fcea920f7412b5da7be0cf42b8c93759',1);
+INSERT INTO `taikhoan` VALUES (1,'kh1','25d55ad283aa400af464c76d713c07ad',0),(2,'nv1','25d55ad283aa400af464c76d713c07ad',1);
 /*!40000 ALTER TABLE `taikhoan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -176,7 +176,7 @@ CREATE TABLE `tram` (
   `DiaChi` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`TramID`),
   UNIQUE KEY `TramID_UNIQUE` (`TramID`)
-) ENGINE=InnoDB AUTO_INCREMENT=1213333346 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -185,7 +185,7 @@ CREATE TABLE `tram` (
 
 LOCK TABLES `tram` WRITE;
 /*!40000 ALTER TABLE `tram` DISABLE KEYS */;
-INSERT INTO `tram` VALUES (1,'An Sương','Củ Chi, TP Hồ Chí Minh'),(2,'Tân Châu','Huyện Tân Châu, Tây Ninh'),(3,'Bến xe Miền Tây','Bình Tân, Tp Hồ Chí Minh'),(4,'Đồng Tháp','tx Đồng Tháp, Đồng Tháp'),(5,'Phan Thiết','Phúy Thủy - Phan Thiết');
+INSERT INTO `tram` VALUES (1,'An Sương','Củ Chi, TP Hồ Chí Minh'),(2,'Tân Châu','Huyện Tân Châu, Tây Ninh'),(3,'Bến xe Miền Tây','Bình Tân, TP Hồ Chí Minh'),(4,'Đồng Tháp','tx Đồng Tháp, Đồng Tháp');
 /*!40000 ALTER TABLE `tram` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -208,7 +208,7 @@ CREATE TABLE `tuyenduong` (
   KEY `fk_tuyenduong_toid_tram_idx1` (`ToTram`),
   CONSTRAINT `fk_fromtram_toid_tram` FOREIGN KEY (`FromTram`) REFERENCES `tram` (`TramID`),
   CONSTRAINT `fk_totram_toid_tram` FOREIGN KEY (`ToTram`) REFERENCES `tram` (`TramID`)
-) ENGINE=InnoDB AUTO_INCREMENT=34345 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -217,7 +217,7 @@ CREATE TABLE `tuyenduong` (
 
 LOCK TABLES `tuyenduong` WRITE;
 /*!40000 ALTER TABLE `tuyenduong` DISABLE KEYS */;
-INSERT INTO `tuyenduong` VALUES (1,'Tân Châu-An Sương',1,2,120,'01:30:00'),(12,'Đồng tháp to cà Mau',3,4,120,'01:30:00'),(15,'Tân Châu-An Sương',1,2,120,'01:30:00'),(1001,'Tân Châu to An Sương(1001)',2,1,120,'01:30:00');
+INSERT INTO `tuyenduong` VALUES (1,'An Sương-Tân Châu',1,2,120,'02:30:00'),(2,'Tân Châu-An Sương',2,1,120,'02:30:00'),(3,'An Sương-Đồng Tháp',1,4,150,'03:07:00'),(4,'Tân Châu-Đồng Tháp',2,4,300,'06:15:00'),(5,'Đồng Tháp-Tân Châu',4,2,300,'06:15:00');
 /*!40000 ALTER TABLE `tuyenduong` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -244,7 +244,7 @@ CREATE TABLE `vexe` (
   CONSTRAINT `fk_vexe_id_chuyenxe` FOREIGN KEY (`ChuyenXeID`) REFERENCES `chuyenxe` (`ChuyenXeID`),
   CONSTRAINT `fk_vexe_khachhang` FOREIGN KEY (`KhachHangID`) REFERENCES `khachhang` (`KhachHangID`),
   CONSTRAINT `fk_vexe_nhanvien` FOREIGN KEY (`NhanVienID`) REFERENCES `nhanvien` (`NhanVienID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -253,6 +253,7 @@ CREATE TABLE `vexe` (
 
 LOCK TABLES `vexe` WRITE;
 /*!40000 ALTER TABLE `vexe` DISABLE KEYS */;
+INSERT INTO `vexe` VALUES (1,1,12,'21:36:49','2021-05-02',1,NULL,1);
 /*!40000 ALTER TABLE `vexe` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -265,15 +266,15 @@ DROP TABLE IF EXISTS `xe`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `xe` (
   `XeID` int NOT NULL AUTO_INCREMENT,
-  `BienSo` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `BienSo` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `SoGhe` int NOT NULL,
-  `LoaiXe` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `LoaiXe` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `NamSX` date DEFAULT NULL,
   `TramID` int DEFAULT NULL,
   PRIMARY KEY (`XeID`),
   KEY `fk_xe_id_tram_idx` (`TramID`),
   CONSTRAINT `fk_xe_id_tram` FOREIGN KEY (`TramID`) REFERENCES `tram` (`TramID`)
-) ENGINE=InnoDB AUTO_INCREMENT=77786 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -282,7 +283,7 @@ CREATE TABLE `xe` (
 
 LOCK TABLES `xe` WRITE;
 /*!40000 ALTER TABLE `xe` DISABLE KEYS */;
-INSERT INTO `xe` VALUES (1,'70k-9999',40,'HondaToYETa','2017-11-26',1),(2,'59e-7777',40,'MercedeVinfast','1970-01-01',1),(3,'99k2-6666',40,'exiyeter','2020-12-01',3),(4,'87-1234',40,'djsoda','1970-01-01',4);
+INSERT INTO `xe` VALUES (1,'70k-1234',30,'Toyota','2015-05-15',2),(2,'59e-5592',30,'Honda','2017-05-17',1),(3,'59e-3456',30,'Honda','2017-05-10',3),(4,'66k-9988',25,'Toyota','2018-05-10',4);
 /*!40000 ALTER TABLE `xe` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -295,4 +296,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-25 13:40:16
+-- Dump completed on 2021-05-02 21:54:19

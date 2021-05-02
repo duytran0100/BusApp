@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="603.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.test.bus.TimVeController">
+   <children>
+      <AnchorPane layoutX="-1.0" layoutY="-1.0" prefHeight="75.0" prefWidth="749.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.39999999999997726">
+         <children>
+            <Label prefHeight="75.0" prefWidth="714.0" style="-fx-alignment: center; -fx-background-color: #FFD700;" text="Quản Lý Trạm Xe" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font name="Times New Roman Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="1.0" layoutY="74.0" prefHeight="198.0" prefWidth="375.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="373.0">
+         <children>
+            <Label layoutX="27.0" layoutY="30.0" prefHeight="26.0" prefWidth="62.0" text="Trạm đi">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="cbTramDi" layoutX="137.0" layoutY="31.0" prefHeight="26.0" prefWidth="210.0" />
+            <Label layoutX="27.0" layoutY="72.0" prefHeight="26.0" prefWidth="62.0" text="Trạm đến">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="cbTramDen" layoutX="137.0" layoutY="73.0" prefHeight="26.0" prefWidth="210.0" />
+            <Label layoutX="28.0" layoutY="111.0" prefHeight="26.0" prefWidth="98.0" text="Ngày khởi hành">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button layoutX="111.0" layoutY="153.0" mnemonicParsing="false" onAction="#TimVe" prefHeight="36.0" prefWidth="122.0" text="Tìm Chuyến">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font>
+            </Button>
+            <DatePicker fx:id="dpNgayKhoiHanh" layoutX="138.0" layoutY="112.0" prefHeight="26.0" prefWidth="210.0" />
+         </children>
+      </AnchorPane>
+      <TableView fx:id="tbChuyenXe" layoutX="-1.0" layoutY="272.0" onMouseClicked="#clickItem" prefHeight="331.0" prefWidth="749.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="272.0" />
+   </children>
+</AnchorPane>

@@ -32,16 +32,21 @@
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
             </Label>
-            <Button layoutX="277.0" layoutY="257.0" mnemonicParsing="false" onAction="#Login" prefHeight="38.0" prefWidth="95.0" text="Đăng Nhập">
+            <Button fx:id="btLogin" layoutX="277.0" layoutY="257.0" mnemonicParsing="false" onAction="#Login" prefHeight="38.0" prefWidth="95.0" text="Đăng Nhập">
                <font>
                   <Font name="Times New Roman Bold" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="400.0" layoutY="257.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="95.0" text="Đăng Kí">
+            <Button layoutX="400.0" layoutY="257.0" mnemonicParsing="false" onAction="#showDangKi" prefHeight="38.0" prefWidth="95.0" text="Đăng Kí">
                <font>
                   <Font name="Times New Roman Bold" size="14.0" />
                </font>
             </Button>
+            <TextField fx:id="txtTimer" alignment="CENTER" editable="false" layoutX="187.0" layoutY="257.0" prefHeight="38.0" prefWidth="59.0">
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font>
+            </TextField>
          </children>
       </AnchorPane>
    </children>

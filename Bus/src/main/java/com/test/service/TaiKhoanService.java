@@ -33,8 +33,10 @@ public class TaiKhoanService {
             stm.setString(2, hash_password);
             stm.setInt(3, 0);
             int excuteUpdate = stm.executeUpdate();
-            conn.commit();
-            return excuteUpdate > 0;
+            if(excuteUpdate > 0){
+                conn.commit();
+                return true;
+            }
         }
         return false;
     }

@@ -24,15 +24,13 @@ import java.util.List;
 public class VeXeService {
     public boolean kiemTraDat(int soGhe, int ChuyenID) throws SQLException{
         Connection conn = JdbcUtils.getConn();
-        String sql = "SELECT VeDat FROM vexe WHERE ChuyenXeID = ? AND SoGhe = ?";
+        String sql = "SELECT * FROM vexe WHERE ChuyenXeID = ? AND SoGhe = ?";
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setInt(1, ChuyenID);
         stm.setInt(2, soGhe);
         ResultSet rs = stm.executeQuery();
-        if (rs.next()){
-            return rs.getByte("VeDat") == 0; // true nếu vé trống, false nếu vé đã được đặt
-        }
-       return false; // vé không tồn tại
+       
+        return rs.next();
     }
     
     public List<VeXe> getVeXe() throws SQLException{
@@ -120,14 +118,22 @@ public class VeXeService {
         try {
             Connection conn = JdbcUtils.getConn();
             conn.setAutoCommit(false);
-            String sql = "INSERT INTO vexe(ChuyenXeID, SoGhe,VeDat)" + "Values(?,?,?)";
+            String sql = "INSERT INTO vexe(ChuyenXeID, SoGhe,GioDat,"
+                    + "NgayDat,KhachHangID,VeDat)" 
+                    + "Values(?,?,?,?,?,?)";
             PreparedStatement stm = conn.prepareStatement(sql);
             stm.setInt(1,v.getChuyenXe().getChuyenXeId());
             stm.setInt(2,v.getSoGhe());
-            stm.setInt(5, v.getVeDat());
+            stm.setTime(3, java.sql.Time.valueOf(LocalTime.now()));
+            stm.setDate(4, java.sql.Date.valueOf(LocalDate.now()));
+            stm.setInt(5, v.getKhachHang().getKhachHangId());
+            stm.setInt(6, (byte) 1);
             int executeUpdate = stm.executeUpdate();
-            conn.commit();
-            return executeUpdate > 0;
+            if (executeUpdate > 0)
+            {
+                conn.commit();
+                return true;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(TramService.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -145,7 +151,12 @@ public class VeXeService {
             stm.setTime(1, java.sql.Time.valueOf(LocalTime.now()));
             stm.setDate(2, java.sql.Date.valueOf(LocalDate.now()));
             stm.setInt(3, khachHangId);
-            stm.setInt(4, nhanVienId);
+            if(nhanVienId <= 0){
+                stm.setObject(4, null);
+            }
+            else{
+                stm.setInt(4, nhanVienId);
+            }
             stm.setByte(5, (byte)1);
             stm.setInt(6, soGhe);
             stm.setInt(7, chuyenXeId);

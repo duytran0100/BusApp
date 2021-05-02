@@ -5,6 +5,7 @@
  */
 package com.test.tester;
 
+import com.test.pojo.VeXe;
 import com.test.service.JdbcUtils;
 import com.test.service.VeXeService;
 import java.sql.Connection;
@@ -14,6 +15,7 @@ import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.ResultSet;
+import java.util.List;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -28,6 +30,7 @@ public class VeXeTester {
     @BeforeClass
     public static void setUp() throws SQLException{
         conn = JdbcUtils.getConn();
+        
     }
     
     @AfterClass
@@ -39,5 +42,34 @@ public class VeXeTester {
         }
     }
     
+    @Test
+    public void testKiemTraDat() throws SQLException{
+        VeXeService veService = new VeXeService();
+        boolean kq = veService.kiemTraDat(16, 85);
+        
+        Assert.assertTrue(kq);
+    }
+    
+    @Test
+    public void testGetVeXe() throws SQLException{
+        VeXeService veXeService = new VeXeService();
+        List<VeXe> dsVe = veXeService.getVeXe();
+        
+        Assert.assertTrue(dsVe.size() >= 1);
+    }
+    
+    @Test
+    public void testVeBySoGhe() throws SQLException{
+        VeXeService veService = new VeXeService();
+        
+        Assert.assertNotNull(veService.getVeXeBySoGhe(16, 85));
+    }
+    
+    @Test
+    public void testCheckTimeDatVe() throws SQLException{
+        VeXeService veService = new VeXeService();
+        
+        Assert.assertTrue(veService.CheckTimeDatVe(85));
+    }
 
 }
