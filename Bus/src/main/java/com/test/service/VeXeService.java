@@ -175,17 +175,10 @@ public class VeXeService {
         try {
             Connection conn = JdbcUtils.getConn();
             conn.setAutoCommit(false);
-            String sql = "Update vexe "
-                    + "set GioDat = ?, NgayDat = ?, KhachHangID = ?, NhanVienID = ?,VeDat = ?"
-                    + "where SoGhe = ? and ChuyenXeID = ?";
+            String sql = "Delete from vexe where SoGhe = ? and ChuyenXeID = ?";
             PreparedStatement stm = conn.prepareStatement(sql);
-            stm.setObject(1, null);
-            stm.setObject(2, null);
-            stm.setObject(3, null);
-            stm.setObject(4, null);
-            stm.setByte(5, (byte)0);
-            stm.setInt(6, soGhe);
-            stm.setInt(7, chuyenXeId);
+            stm.setInt(1, soGhe);
+            stm.setInt(2, chuyenXeId);
             int executeUpdate = stm.executeUpdate();
             if (executeUpdate > 0){
                 conn.commit();
@@ -197,12 +190,20 @@ public class VeXeService {
         return false;
     }
 
-    public boolean doiVe(VeXe ve1, int gheMoi, int chuyenXeMoi) throws SQLException{
+    public boolean doiVe(VeXe veCu, int gheMoi, int chuyenXeMoi) throws SQLException{
         boolean kt = kiemTraDat(gheMoi, chuyenXeMoi);
-        if (kt == true){         
-            if (datVeXe(gheMoi, chuyenXeMoi, ve1.getKhachHang().getKhachHangId(),ve1.getNhanVien().getNhanVienId()))
-                if (huyVeXe(ve1.getSoGhe(), ve1.getChuyenXe().getChuyenXeId()))
+        if (kt == false){         
+            VeXe veMoi = veCu;
+            ChuyenXeService cxService = new ChuyenXeService();
+            veMoi.setSoGhe(gheMoi);
+            veMoi.setChuyenXe(cxService.getChuyenByID(chuyenXeMoi));
+            
+            if(addVeXe(veMoi))
+            {
+                if(huyVeXe(veCu.getSoGhe(), veCu.getChuyenXe().getChuyenXeId()))
                     return true;
+            }
+            
         }
         return false;
     }

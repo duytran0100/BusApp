@@ -6,15 +6,14 @@
 package com.test.tester;
 
 import com.test.pojo.VeXe;
+import com.test.service.ChuyenXeService;
 import com.test.service.JdbcUtils;
+import com.test.service.KhachHangService;
 import com.test.service.VeXeService;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.sql.ResultSet;
 import java.util.List;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -45,7 +44,7 @@ public class VeXeTester {
     @Test
     public void testKiemTraDat() throws SQLException{
         VeXeService veService = new VeXeService();
-        boolean kq = veService.kiemTraDat(16, 85);
+        boolean kq = veService.kiemTraDat(12, 1);
         
         Assert.assertTrue(kq);
     }
@@ -62,14 +61,45 @@ public class VeXeTester {
     public void testVeBySoGhe() throws SQLException{
         VeXeService veService = new VeXeService();
         
-        Assert.assertNotNull(veService.getVeXeBySoGhe(16, 85));
+        Assert.assertNotNull(veService.getVeXeBySoGhe(12, 1));
     }
     
     @Test
     public void testCheckTimeDatVe() throws SQLException{
         VeXeService veService = new VeXeService();
         
-        Assert.assertTrue(veService.CheckTimeDatVe(85));
+        Assert.assertTrue(veService.CheckTimeDatVe(1));
+    }
+    
+    @Test
+    public void testAddVe() throws SQLException{
+        VeXeService veXeService = new VeXeService();
+        ChuyenXeService cxService = new ChuyenXeService();
+        KhachHangService khService = new KhachHangService();
+        
+        VeXe veXe = new VeXe();
+        veXe.setChuyenXe(cxService.getChuyenByID(1));
+        veXe.setSoGhe(13);
+        veXe.setKhachHang(khService.getKhachHangById(1));
+        
+        Assert.assertTrue(veXeService.addVeXe(veXe));
+    }
+    
+    @Test
+    public void testDoiVe() throws SQLException{
+        VeXeService veXeService = new VeXeService();
+        VeXe veCu = veXeService.getVeXeBySoGhe(13, 1);
+        boolean kq = veXeService.doiVe(veCu, 14, 1);
+        
+        Assert.assertTrue(kq);
+    }
+    
+    @Test
+    public void testHuyVe(){
+        VeXeService veXeService = new VeXeService();
+        boolean kq = veXeService.huyVeXe(13, 1);
+        
+        Assert.assertTrue(kq);
     }
 
 }

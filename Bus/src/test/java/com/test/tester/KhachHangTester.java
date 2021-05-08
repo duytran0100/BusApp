@@ -72,7 +72,7 @@ public class KhachHangTester {
     @Test
     public void testGetKhachHangByPhone(){
         try {
-            KhachHang kh = khService.getKhachHangByPhone("0909792901");
+            KhachHang kh = khService.getKhachHangByPhone("0909792905");
             Assert.assertNotNull(kh);
         } catch (SQLException ex) {
             Logger.getLogger(KhachHangTester.class.getName()).log(Level.SEVERE, null, ex);

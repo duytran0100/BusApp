@@ -44,11 +44,12 @@ public class TaiKhoanTester {
         }
     }
     
+    
     @Test
     public void testAddTaiKhoan(){
         try {
             boolean kt =tkService.addTaiKhoan("duytran0100", "123456");
-            Assert.assertEquals(kt,false);
+            Assert.assertTrue(kt);
         } catch (SQLException ex) {
             Logger.getLogger(TaiKhoanTester.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -83,6 +84,7 @@ public class TaiKhoanTester {
     @Test
     public void testCheckTaiKhoan(){
         try {
+
             boolean kq = tkService.checkUserName("duytran0100");
             Assert.assertTrue(kq);
         } catch (SQLException ex) {
@@ -93,7 +95,7 @@ public class TaiKhoanTester {
     @Test
     public void testChangePassWord(){
         try {
-            boolean kq = tkService.changePassword("duytran0100", "1234567");
+            boolean kq = tkService.changePassword("duytran0100", "12345678");
             Assert.assertTrue(kq);
         } catch (SQLException ex) {
             Logger.getLogger(TaiKhoanTester.class.getName()).log(Level.SEVERE, null, ex);
@@ -103,13 +105,17 @@ public class TaiKhoanTester {
     @Test
     public void testCheckLogin(){
         try {
-            boolean kq1 = tkService.checkLogin("duytran0100", "1234567");
-            boolean kq2 = tkService.checkLogin("duytran0100", "123456");
-            Assert.assertTrue(kq1);
-            Assert.assertFalse(kq2);
+            boolean kq = tkService.checkLogin("kh1", "12345678");
+            Assert.assertTrue(kq);
         } catch (SQLException ex) {
             Logger.getLogger(TaiKhoanTester.class.getName()).log(Level.SEVERE, null, ex);
-        }
-                
+        }    
+    }
+    
+    @Test
+    public void testDeleteTaiKhoan() throws SQLException{
+        TaiKhoan tk = tkService.getTaiKhoanByUserName("duytran0100");
+        
+        Assert.assertTrue(tkService.deleteTaiKhoan(tk.getTaiKhoanId()));
     }
 }

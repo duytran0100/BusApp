@@ -87,8 +87,16 @@ public class TramTester {
     @Test
     public void testDelete() throws SQLException{
         TramService s = new TramService();
-        Assert.assertFalse(s.deleteTram(1));
-        Assert.assertTrue(s.deleteTram(5));
+        List<Tram> dsTram = s.getTram("Tram Test");
+        
+        dsTram.forEach(tram ->{
+            try {
+                Assert.assertTrue(s.deleteTram(tram.getTramId()));
+            } catch (SQLException ex) {
+                Logger.getLogger(TramTester.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
     }
     
 }

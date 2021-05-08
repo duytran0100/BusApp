@@ -57,7 +57,7 @@ public class TuyenDuongTester {
     @Test
     public void testGetTuyenDuongByID() throws SQLException{
         TuyenDuongService service = new TuyenDuongService();
-        Assert.assertNotNull(service.getTuyenDuongById(12));
+        Assert.assertNotNull(service.getTuyenDuongById(1));
     }
     
     @Test
@@ -82,8 +82,15 @@ public class TuyenDuongTester {
     public void testDeleteTuyenDuong(){
         try {
             TuyenDuongService tdService = new TuyenDuongService();
-            Assert.assertFalse(tdService.deleteTuyenDuong(1));
-            Assert.assertTrue(tdService.deleteTuyenDuong(0));
+            List<TuyenDuong> dsTuyenDuong = tdService.getTuyenDuong("Tuyen Test");
+            
+            dsTuyenDuong.forEach(td ->{
+                try {
+                    Assert.assertTrue(tdService.deleteTuyenDuong(td.getTuyenDuongId()));
+                } catch (SQLException ex) {
+                    Logger.getLogger(TuyenDuongTester.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
         }catch (SQLException ex) {
             Logger.getLogger(TuyenDuongTester.class.getName()).log(Level.SEVERE, null, ex);
         }

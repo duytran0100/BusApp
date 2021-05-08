@@ -72,7 +72,7 @@ public class NhanVienTester {
             nv.setTen("Duy");
             nv.setEmail("duytran000@gmail.com");
             nv.setSdt("0909792905");
-            nv.setTaiKhoan(tkService.getTaiKhoanById(7));
+            nv.setTaiKhoan(tkService.getTaiKhoanById(2));
             boolean kq = nvService.addNhanVien(nv);
             Assert.assertFalse(kq);
         } catch (SQLException ex) {
@@ -89,7 +89,7 @@ public class NhanVienTester {
             nv.setEmail("duytran0100@gmail.com");
             nv.setSdt("0886933092");
             nv.setDiaChi("Binh Duong");
-            nv.setTaiKhoan(tkService.getTaiKhoanById(7));
+            nv.setTaiKhoan(tkService.getTaiKhoanById(2));
             boolean kq = nvService.updateNhanVien(nv);
             Assert.assertTrue(kq);
         } catch (SQLException ex) {
@@ -100,7 +100,7 @@ public class NhanVienTester {
     @Test
     public void testCheckNhanVien(){
         try {
-            Assert.assertTrue(nvService.checkNhanVien(7));
+            Assert.assertTrue(nvService.checkNhanVien(2));
         } catch (SQLException ex) {
             Logger.getLogger(NhanVienTester.class.getName()).log(Level.SEVERE, null, ex);
         }
