@@ -53,8 +53,8 @@ public class TaiKhoanService {
     public List<TaiKhoan> getTaiKhoan() throws SQLException{
         
             Connection conn = JdbcUtils.getConn();
-            String sql = "Select * from taikhoan";
-            Statement stm = conn.createStatement();
+            String sql = "Select * from taikhoan ";
+            PreparedStatement stm = conn.prepareStatement(sql);
             ResultSet rs = stm.executeQuery(sql);
             List<TaiKhoan> ds_taikhoan = new ArrayList<>();
             while(rs.next()){
@@ -105,6 +105,24 @@ public class TaiKhoanService {
             return tk;
         }
         return null;
+    }
+    
+    public List<TaiKhoan> getTaiKhoan(String username) throws SQLException{
+        Connection conn = JdbcUtils.getConn();
+        String sql = "Select * from taikhoan where username like concat('%',?,'%') ";
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setString(1, username);
+        ResultSet rs = stm.executeQuery();
+        List<TaiKhoan> ds_taikhoan = new ArrayList<>();
+            while(rs.next()){
+                TaiKhoan tk = new TaiKhoan();
+                tk.setTaiKhoanId(rs.getInt("TaiKhoanID"));
+                tk.setUserName(rs.getString("username"));
+                tk.setPassWord(rs.getString("password"));
+                tk.setLoaiTaiKhoan(rs.getInt("LoaiTaiKhoan"));
+                ds_taikhoan.add(tk);
+            }
+        return ds_taikhoan;
     }
     
     public boolean changePassword(String username, String password) throws SQLException{

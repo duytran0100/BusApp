@@ -13,13 +13,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="428.0" prefWidth="441.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.test.bus.ThemKhachHangController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="428.0" prefWidth="441.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.test.bus.ThemNhanVienController">
    <children>
       <SplitPane dividerPositions="0.11069418386491559" layoutX="102.0" layoutY="14.0" orientation="VERTICAL" prefHeight="428.0" prefWidth="410.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Label layoutX="150.0" layoutY="14.0" prefHeight="44.0" prefWidth="408.8" style="-fx-alignment: center; -fx-background-color: #32CD32;" text="Thêm khách hàng" textFill="#f7f4f4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Label layoutX="150.0" layoutY="14.0" prefHeight="44.0" prefWidth="408.8" style="-fx-alignment: center; -fx-background-color: #32CD32;" text="Thêm nhân viên" textFill="#f7f4f4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
                         <Font name="Times New Roman Bold" size="24.0" />
                      </font>
@@ -65,7 +65,7 @@
                         <TextField fx:id="txtTen" GridPane.columnIndex="1" />
                         <TextField fx:id="txtSDT" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <TextField fx:id="txtEmail" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Button mnemonicParsing="false" onAction="#addKhachHangHandler" prefHeight="44.0" prefWidth="124.0" style="-fx-background-color: #32CD32;" text="Thêm" textFill="#f4f3f3" GridPane.rowIndex="5">
+                        <Button mnemonicParsing="false" onAction="#addNVHandler" prefHeight="44.0" prefWidth="124.0" style="-fx-background-color: #32CD32;" text="Thêm" textFill="#f4f3f3" GridPane.rowIndex="5">
                            <font>
                               <Font name="Times New Roman Bold" size="18.0" />
                            </font>

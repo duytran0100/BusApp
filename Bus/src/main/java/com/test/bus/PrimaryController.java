@@ -84,6 +84,21 @@ public class PrimaryController implements Initializable{
             Logger.getLogger(PrimaryController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+        public void loadQuanLyNhanVienUI(ActionEvent e){
+        try {
+            loadUI("quanlynhanvien.fxml");
+        } catch (IOException ex) {
+            Logger.getLogger(PrimaryController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void loadQuanLyTaiKhoanUI(ActionEvent e){
+        try {
+            loadUI("quanlytaikhoan.fxml");
+        } catch (IOException ex) {
+            Logger.getLogger(PrimaryController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     public void loadTaiKhoanUI(ActionEvent e){
         try {

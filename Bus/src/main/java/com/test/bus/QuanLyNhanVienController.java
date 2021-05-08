@@ -5,8 +5,8 @@
  */
 package com.test.bus;
 
-import com.test.pojo.KhachHang;
-import com.test.service.KhachHangService;
+import com.test.pojo.NhanVien;
+import com.test.service.NhanVienService;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -32,28 +32,27 @@ import javafx.stage.StageStyle;
 
 /**
  *
- * @author Admin
+ * @author DELL
  */
-public class QuanLyUsersController implements Initializable{
-    @FXML TableView<KhachHang> tableUser;
-    @FXML TextField txtTenKhachHang;
-    public KhachHangService khachHangService = new KhachHangService();
+public class QuanLyNhanVienController implements Initializable{
+    @FXML TableView<NhanVien> tableNhanVien;
+    @FXML TextField txtNhanVien;
+    public NhanVienService nhanVienService = new NhanVienService();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        loadUser();
+        loadStaff();
         loadData("");
         
-        // Tìm kiếm theo tên khách hàng
-        txtTenKhachHang.textProperty().addListener(es ->{
-            loadData(txtTenKhachHang.getText());
+        // Tìm kiếm theo tên tài khoản
+        txtNhanVien.textProperty().addListener(es ->{
+            loadData(txtNhanVien.getText());
         });
     }
-    
-    //load table Khách Hàng
-    public void loadUser(){
-        TableColumn colID = new TableColumn("Khách hàng ID");
-        colID.setCellValueFactory(new PropertyValueFactory("khachHangId"));
+    //load table Tai Khoan
+    public void loadStaff(){
+        TableColumn colID = new TableColumn("Nhân viên ID");
+        colID.setCellValueFactory(new PropertyValueFactory("nhanVienId"));
         
         TableColumn colHo = new TableColumn("Họ đệm");
         colHo.setCellValueFactory(new PropertyValueFactory("hoDem"));
@@ -70,17 +69,15 @@ public class QuanLyUsersController implements Initializable{
         TableColumn colDiaChi = new TableColumn("Địa chỉ");
         colDiaChi.setCellValueFactory(new PropertyValueFactory("diaChi"));
         
-        tableUser.getColumns().addAll(colID,colHo,colTen,colSdt,colEmail,colDiaChi);
+        tableNhanVien.getColumns().addAll(colID,colHo,colTen,colSdt,colEmail,colDiaChi);
         
     }
-    
-    //load data Khách Hàng
     public void loadData(String kw) {
         try {
-            tableUser.getItems().clear();
-            tableUser.setItems(FXCollections.observableArrayList(khachHangService.getKhachHang(kw)));
+            tableNhanVien.getItems().clear();
+            tableNhanVien.setItems(FXCollections.observableArrayList(nhanVienService.getNhanVien(kw)));
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyUsersController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyNhanVienController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -90,45 +87,43 @@ public class QuanLyUsersController implements Initializable{
     }
     
     //Hiển thị cửa sổ thêm khách hàng
-    public void showAddKhachHang(){
+    public void showAddNV(){
         try {
-            AnchorPane addKhachHang = FXMLLoader.load(getClass().getResource("addkhachhang.fxml"));
-            Scene scene = new Scene(addKhachHang);
+            AnchorPane addNhanVien = FXMLLoader.load(getClass().getResource("addNhanVien.fxml"));
+            Scene scene = new Scene(addNhanVien);
             
             Stage stage = new Stage(StageStyle.DECORATED);
-            stage.setTitle("Chức năng thêm khách hàng");
+            stage.setTitle("Chức năng thêm nhân viên");
             stage.setScene(scene);
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initStyle(StageStyle.UTILITY);
             stage.showAndWait();
             loadData("");
         } catch (IOException ex) {
-            Logger.getLogger(QuanLyUsersController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyNhanVienController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public void deteleKhachHang() throws SQLException{
-            KhachHang khachHang = tableUser.getSelectionModel().getSelectedItem();
-            int idKH = khachHang.getKhachHangId();
-            String ten = khachHang.getTen();
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setContentText(String.format("Bạn có chắc muốn xóa khách hàng %s không?", ten));
-
-            Optional<ButtonType> option = alert.showAndWait();
-
-            if(option.get() == ButtonType.OK){
-                alert.setAlertType(Alert.AlertType.INFORMATION);
-                if(khachHangService.deleteKhachHang(idKH))
-                {
-                    alert.setContentText("Xóa thành công");
-                    loadData("");
-                }
-                else{
-                    alert.setContentText("Xóa thất bại\nDữ liệu khách hàng có thể đang được sử dụng");
-                }
-                alert.show();
+    public void deleteNV() throws SQLException{
+        NhanVien nhanVien = tableNhanVien.getSelectionModel().getSelectedItem();
+        int idNV = nhanVien.getNhanVienId();
+        String ten = nhanVien.getTen();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText(String.format("Bạn có chắc muốn xóa nhân viên %s không?", ten));
+        
+        Optional<ButtonType> option = alert.showAndWait();
+        
+        if(option.get() == ButtonType.OK){
+            alert.setAlertType(Alert.AlertType.INFORMATION);
+            if(nhanVienService.deleteNhanVien(idNV))
+            {
+                alert.setContentText("Xóa thành công");
+                loadData("");
             }
+            else{
+                alert.setContentText("Xóa thất bại\nDữ liệu khách hàng có thể đang được sử dụng");
+            }
+            alert.show();
+        }
     }
-    
-    
 }

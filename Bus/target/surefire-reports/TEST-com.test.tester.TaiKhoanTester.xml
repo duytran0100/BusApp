@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="0" name="com.test.tester.TaiKhoanTester" time="0.295" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="com.test.tester.TaiKhoanTester" time="0.307" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="15.0.2+7-27"/>
@@ -60,11 +60,11 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.test.tester.TaiKhoanTester" name="testGetTaiKhoanByUserName" time="0.077"/>
-  <testcase classname="com.test.tester.TaiKhoanTester" name="testCheckLogin" time="0.03"/>
-  <testcase classname="com.test.tester.TaiKhoanTester" name="testCheckTaiKhoan" time="0.003"/>
-  <testcase classname="com.test.tester.TaiKhoanTester" name="testChangePassWord" time="0.05"/>
-  <testcase classname="com.test.tester.TaiKhoanTester" name="testDeleteTaiKhoan" time="0.067"/>
-  <testcase classname="com.test.tester.TaiKhoanTester" name="testUniqueUsername" time="0.024"/>
-  <testcase classname="com.test.tester.TaiKhoanTester" name="testAddTaiKhoan" time="0.044"/>
+  <testcase classname="com.test.tester.TaiKhoanTester" name="testGetTaiKhoanByUserName" time="0.073"/>
+  <testcase classname="com.test.tester.TaiKhoanTester" name="testCheckLogin" time="0.026"/>
+  <testcase classname="com.test.tester.TaiKhoanTester" name="testCheckTaiKhoan" time="0.022"/>
+  <testcase classname="com.test.tester.TaiKhoanTester" name="testChangePassWord" time="0.038"/>
+  <testcase classname="com.test.tester.TaiKhoanTester" name="testDeleteTaiKhoan" time="0.072"/>
+  <testcase classname="com.test.tester.TaiKhoanTester" name="testUniqueUsername" time="0.029"/>
+  <testcase classname="com.test.tester.TaiKhoanTester" name="testAddTaiKhoan" time="0.047"/>
 </testsuite>

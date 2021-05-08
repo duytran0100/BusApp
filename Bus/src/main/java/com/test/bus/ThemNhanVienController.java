@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package com.test.bus;
-import com.test.pojo.KhachHang;
-import com.test.service.KhachHangService;
+
+import com.test.pojo.NhanVien;
+import com.test.service.NhanVienService;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -18,19 +19,20 @@ import javafx.scene.control.TextField;
  *
  * @author Admin
  */
-public class ThemKhachHangController implements Initializable{
+public class ThemNhanVienController implements Initializable{
+
     @FXML TextField txtHo;
     @FXML TextField txtTen;
     @FXML TextField txtSDT;
     @FXML TextField txtEmail;
     @FXML TextField txtDiaChi;
-    public KhachHangService khachHangService = new KhachHangService();
+    public NhanVienService nhanVienService = new NhanVienService();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
     }
-    public void addKhachHangHandler() throws SQLException{
+    public void addNVHandler() throws SQLException{
         String hoDem = txtHo.getText();
         String ten = txtTen.getText();
         String sdt = txtSDT.getText();
@@ -39,14 +41,14 @@ public class ThemKhachHangController implements Initializable{
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         
         if(!ten.equals("") && !diaChi.equals("")){
-            KhachHang khachHang = new KhachHang();
-            khachHang.setTen(ten);
-            khachHang.setHoDem(hoDem);
-            khachHang.setDiaChi(diaChi);
-            khachHang.setEmail(emai);
-            khachHang.setSdt(sdt);
+            NhanVien nhanVien = new NhanVien();
+            nhanVien.setTen(ten);
+            nhanVien.setHoDem(hoDem);
+            nhanVien.setDiaChi(diaChi);
+            nhanVien.setEmail(emai);
+            nhanVien.setSdt(sdt);
             
-            if(khachHangService.addKhachHang(khachHang)){
+            if(nhanVienService.addNhanVien(nhanVien)){
                 alert.setContentText("Thêm thành công");
                         clearHandler();
             }
@@ -55,7 +57,7 @@ public class ThemKhachHangController implements Initializable{
             } 
         }
         else{
-            alert.setContentText("Vui lòng điền đầy đủ thông tin khách hàng");
+            alert.setContentText("Vui lòng điền đầy đủ thông tin nhân viên");
         }
         alert.show();
             
@@ -69,6 +71,4 @@ public class ThemKhachHangController implements Initializable{
         txtEmail.setText("");
         txtDiaChi.setText("");
     }
-
-    
 }
