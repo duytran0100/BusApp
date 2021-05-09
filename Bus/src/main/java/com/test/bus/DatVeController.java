@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -59,6 +61,14 @@ public class DatVeController implements Initializable{
         txtHoDem.setText("");
         txtTen.setText("");
         txtSDT.setText("");
+        txtSDT.textProperty().addListener(new ChangeListener<String>(){
+        @Override
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
+            if(!newValue.matches("\\d{0,10}"))
+                    txtSDT.setText(oldValue);
+            }
+        });
+        
         
         try {
             loadGhe();
