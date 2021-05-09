@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="0" name="com.test.tester.VeXeTester" time="1.161" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="com.test.tester.VeXeTester" time="1.239" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="15.0.2+7-27"/>
@@ -60,11 +60,11 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.test.tester.VeXeTester" name="testAddVe" time="0.312"/>
-  <testcase classname="com.test.tester.VeXeTester" name="testDoiVe" time="0.533"/>
-  <testcase classname="com.test.tester.VeXeTester" name="testHuyVe" time="0.031"/>
-  <testcase classname="com.test.tester.VeXeTester" name="testKiemTraDat" time="0"/>
-  <testcase classname="com.test.tester.VeXeTester" name="testGetVeXe" time="0.147"/>
-  <testcase classname="com.test.tester.VeXeTester" name="testVeBySoGhe" time="0.117"/>
-  <testcase classname="com.test.tester.VeXeTester" name="testCheckTimeDatVe" time="0.021"/>
+  <testcase classname="com.test.tester.VeXeTester" name="testAddVe" time="0.35"/>
+  <testcase classname="com.test.tester.VeXeTester" name="testDoiVe" time="0.279"/>
+  <testcase classname="com.test.tester.VeXeTester" name="testHuyVe" time="0.019"/>
+  <testcase classname="com.test.tester.VeXeTester" name="testKiemTraDat" time="0.013"/>
+  <testcase classname="com.test.tester.VeXeTester" name="testGetVeXe" time="0.456"/>
+  <testcase classname="com.test.tester.VeXeTester" name="testVeBySoGhe" time="0.111"/>
+  <testcase classname="com.test.tester.VeXeTester" name="testCheckTimeDatVe" time="0.011"/>
 </testsuite>

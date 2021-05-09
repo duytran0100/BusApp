@@ -10,7 +10,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -20,7 +19,7 @@ import org.apache.commons.codec.digest.DigestUtils;
  * @author Admin
  */
 public class TaiKhoanService {
-    public boolean addTaiKhoan(String username,String password) throws SQLException {
+    public boolean addTaiKhoan(String username,String password,int LoaiTaiKhoan) throws SQLException {
         if (this.checkUserName(username) == false) // Nếu username không tồn tại thì mới làm
         {
             Connection conn = JdbcUtils.getConn();
@@ -31,7 +30,7 @@ public class TaiKhoanService {
             String hash_password = DigestUtils.md5Hex(password);
             stm.setString(1, username);
             stm.setString(2, hash_password);
-            stm.setInt(3, 0);
+            stm.setInt(3, LoaiTaiKhoan);
             int excuteUpdate = stm.executeUpdate();
             if(excuteUpdate > 0){
                 conn.commit();
@@ -88,6 +87,25 @@ public class TaiKhoanService {
         return null;
     }
     
+    public List<TaiKhoan> getTaiKhoan(int LoaiTaiKhoan) throws SQLException{
+        Connection conn = JdbcUtils.getConn();
+        String sql = "Select * from taikhoan where LoaiTaiKhoan = ? ";
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setInt(1, LoaiTaiKhoan);
+        ResultSet rs = stm.executeQuery();
+        List<TaiKhoan> ds_taikhoan = new ArrayList<>();
+            while(rs.next()){
+                TaiKhoan tk = new TaiKhoan();
+                tk.setTaiKhoanId(rs.getInt("TaiKhoanID"));
+                tk.setUserName(rs.getString("username"));
+                tk.setPassWord(rs.getString("password"));
+                tk.setLoaiTaiKhoan(rs.getInt("LoaiTaiKhoan"));
+                ds_taikhoan.add(tk);
+            }
+        return ds_taikhoan;
+    }
+    
+
     public TaiKhoan getTaiKhoanByUserName(String username) throws SQLException{
         Connection conn = JdbcUtils.getConn();
         String sql = "Select * from taikhoan where username = ? ";

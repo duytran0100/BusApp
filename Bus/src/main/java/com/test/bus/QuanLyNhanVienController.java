@@ -6,6 +6,7 @@
 package com.test.bus;
 
 import com.test.pojo.NhanVien;
+import com.test.pojo.TaiKhoan;
 import com.test.service.NhanVienService;
 import java.io.IOException;
 import java.net.URL;
@@ -21,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -69,7 +71,10 @@ public class QuanLyNhanVienController implements Initializable{
         TableColumn colDiaChi = new TableColumn("Địa chỉ");
         colDiaChi.setCellValueFactory(new PropertyValueFactory("diaChi"));
         
-        tableNhanVien.getColumns().addAll(colID,colHo,colTen,colSdt,colEmail,colDiaChi);
+        TableColumn colTaiKhoan = new TableColumn("Tài Khoản");
+        colTaiKhoan.setCellValueFactory(new PropertyValueFactory("taiKhoan"));
+        
+        tableNhanVien.getColumns().addAll(colID,colHo,colTen,colSdt,colEmail,colDiaChi,colTaiKhoan);
         
     }
     public void loadData(String kw) {

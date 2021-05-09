@@ -71,4 +71,8 @@ public class TaiKhoan {
         this.loaiTaiKhoan = loaiTaiKhoan;
     }
     
+    @Override
+    public String toString() {
+        return this.userName;
+    }
 }

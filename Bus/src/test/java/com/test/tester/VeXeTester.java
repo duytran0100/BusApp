@@ -89,7 +89,7 @@ public class VeXeTester {
     public void testDoiVe() throws SQLException{
         VeXeService veXeService = new VeXeService();
         VeXe veCu = veXeService.getVeXeBySoGhe(13, 1);
-        boolean kq = veXeService.doiVe(veCu, 14, 1);
+        boolean kq = veXeService.doiVe(veCu, 14, 1, 1);
         
         Assert.assertTrue(kq);
     }
@@ -97,7 +97,7 @@ public class VeXeTester {
     @Test
     public void testHuyVe(){
         VeXeService veXeService = new VeXeService();
-        boolean kq = veXeService.huyVeXe(13, 1);
+        boolean kq = veXeService.huyVeXe(14, 1);
         
         Assert.assertTrue(kq);
     }

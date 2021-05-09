@@ -108,6 +108,14 @@ public class PrimaryController implements Initializable{
         }
     }
     
+    public void LoadQuanLyVeUI(ActionEvent e){
+        try {
+            loadUI("quanlyve.fxml");
+        } catch (IOException ex) {
+            Logger.getLogger(PrimaryController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void loadTimVeUI(ActionEvent e){
         try {
             loadUI("timve.fxml");

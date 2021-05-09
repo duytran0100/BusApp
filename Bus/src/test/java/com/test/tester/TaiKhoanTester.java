@@ -48,7 +48,7 @@ public class TaiKhoanTester {
     @Test
     public void testAddTaiKhoan(){
         try {
-            boolean kt =tkService.addTaiKhoan("duytran0100", "123456");
+            boolean kt =tkService.addTaiKhoan("duytran0100", "123456",0);
             Assert.assertTrue(kt);
         } catch (SQLException ex) {
             Logger.getLogger(TaiKhoanTester.class.getName()).log(Level.SEVERE, null, ex);

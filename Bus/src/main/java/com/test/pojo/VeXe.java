@@ -20,7 +20,7 @@ public class VeXe extends ChuyenXe{
     private Date ngayDat;
     private KhachHang khachHang;
     private NhanVien nhanVien;
-    private byte veDat; // 1 là vé đã đặt, 0 là vé trống
+    private byte veDat; 
 
     
     /**

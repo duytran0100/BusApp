@@ -54,7 +54,7 @@ public class DangKiController implements Initializable{
                 }
                 else
                 {
-                    tkService.addTaiKhoan(userName, passWord);
+                    tkService.addTaiKhoan(userName, passWord, 0);
                     txtUserName.setText("");
                     txtPassWord.setText("");
                     txtConfirmPass.setText("");
