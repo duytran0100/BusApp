@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="5" failures="0" name="com.test.tester.KhachHangTester" time="0.456" errors="0" skipped="0">
+<testsuite tests="5" failures="0" name="com.test.tester.KhachHangTester" time="0.465" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="15.0.2+7-27"/>
@@ -60,9 +60,9 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.test.tester.KhachHangTester" name="testCheckKhachHang" time="0.093"/>
-  <testcase classname="com.test.tester.KhachHangTester" name="testAddKhachHang" time="0.138"/>
-  <testcase classname="com.test.tester.KhachHangTester" name="testGetKhachHang" time="0.134"/>
-  <testcase classname="com.test.tester.KhachHangTester" name="testUpdateKhachHang" time="0.066"/>
-  <testcase classname="com.test.tester.KhachHangTester" name="testGetKhachHangByPhone" time="0.025"/>
+  <testcase classname="com.test.tester.KhachHangTester" name="testCheckKhachHang" time="0.085"/>
+  <testcase classname="com.test.tester.KhachHangTester" name="testAddKhachHang" time="0.088"/>
+  <testcase classname="com.test.tester.KhachHangTester" name="testGetKhachHang" time="0.238"/>
+  <testcase classname="com.test.tester.KhachHangTester" name="testUpdateKhachHang" time="0.037"/>
+  <testcase classname="com.test.tester.KhachHangTester" name="testGetKhachHangByPhone" time="0.017"/>
 </testsuite>

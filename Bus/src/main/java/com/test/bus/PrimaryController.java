@@ -116,6 +116,14 @@ public class PrimaryController implements Initializable{
         }
     }
     
+    public void loadBangGiaUI(ActionEvent e){
+        try {
+            loadUI("quanlybanggia.fxml");
+        } catch (IOException ex) {
+            Logger.getLogger(PrimaryController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void loadTimVeUI(ActionEvent e){
         try {
             loadUI("timve.fxml");

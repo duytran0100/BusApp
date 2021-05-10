@@ -9,6 +9,8 @@ import com.test.service.KhachHangService;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -28,7 +30,14 @@ public class ThemKhachHangController implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
+        clearHandler();
+        txtSDT.textProperty().addListener(new ChangeListener<String>(){
+        @Override
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
+            if(!newValue.matches("\\d{0,10}"))
+                    txtSDT.setText(oldValue);
+            }
+        });
     }
     public void addKhachHangHandler() throws SQLException{
         String hoDem = txtHo.getText();

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="5" failures="0" name="com.test.tester.XeTester" time="0.542" errors="0" skipped="0">
+<testsuite tests="5" failures="0" name="com.test.tester.XeTester" time="0.525" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="15.0.2+7-27"/>
@@ -60,9 +60,9 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.test.tester.XeTester" name="testAddXe" time="0.137"/>
-  <testcase classname="com.test.tester.XeTester" name="testQuantity" time="0.155"/>
-  <testcase classname="com.test.tester.XeTester" name="testDeleteXe" time="0.095"/>
-  <testcase classname="com.test.tester.XeTester" name="testGetXeByID" time="0.055"/>
-  <testcase classname="com.test.tester.XeTester" name="testNameIsNotNull" time="0.1"/>
+  <testcase classname="com.test.tester.XeTester" name="testAddXe" time="0.112"/>
+  <testcase classname="com.test.tester.XeTester" name="testQuantity" time="0.17"/>
+  <testcase classname="com.test.tester.XeTester" name="testDeleteXe" time="0.074"/>
+  <testcase classname="com.test.tester.XeTester" name="testGetXeByID" time="0.038"/>
+  <testcase classname="com.test.tester.XeTester" name="testNameIsNotNull" time="0.131"/>
 </testsuite>

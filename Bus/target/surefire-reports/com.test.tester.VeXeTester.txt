@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.test.tester.VeXeTester
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.844 sec
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.046 sec

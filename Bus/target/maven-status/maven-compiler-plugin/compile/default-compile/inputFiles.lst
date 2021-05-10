@@ -4,6 +4,7 @@ D:\NetBeansProject\Bus\src\main\java\com\test\service\TaiKhoanService.java
 D:\NetBeansProject\Bus\src\main\java\com\test\bus\QuanLyChuyenXeController.java
 D:\NetBeansProject\Bus\src\main\java\com\test\bus\QuanLyTuyenDuongController.java
 D:\NetBeansProject\Bus\src\main\java\com\test\bus\DoiVeController.java
+D:\NetBeansProject\Bus\src\main\java\com\test\bus\ThemBangGiaController.java
 D:\NetBeansProject\Bus\src\main\java\com\test\bus\TimVeController.java
 D:\NetBeansProject\Bus\src\main\java\com\test\service\VeXeService.java
 D:\NetBeansProject\Bus\src\main\java\com\test\bus\QuanLyUsersController.java
@@ -11,6 +12,7 @@ D:\NetBeansProject\Bus\src\main\java\com\test\bus\ThemTuyenDuongController.java
 D:\NetBeansProject\Bus\src\main\java\com\test\service\TuyenDuongService.java
 D:\NetBeansProject\Bus\src\main\java\com\test\service\XeService.java
 D:\NetBeansProject\Bus\src\main\java\com\test\bus\QuanLyTramController.java
+D:\NetBeansProject\Bus\src\main\java\com\test\bus\QuanLyBangGiaController.java
 D:\NetBeansProject\Bus\src\main\java\com\test\bus\ThemKhachHangController.java
 D:\NetBeansProject\Bus\src\main\java\com\test\pojo\NhanVien.java
 D:\NetBeansProject\Bus\src\main\java\com\test\bus\ThemXeController.java

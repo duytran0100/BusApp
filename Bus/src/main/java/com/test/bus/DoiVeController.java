@@ -16,6 +16,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -41,6 +43,14 @@ public class DoiVeController implements Initializable{
         txtOldGhe.setText(String.valueOf(veXe.getSoGhe()));
         txtNewGhe.setText("");
         LoadChuyenXe();
+        
+        txtNewGhe.textProperty().addListener(new ChangeListener<String>(){
+        @Override
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
+            if(!newValue.matches("\\d{0,2}"))
+                    txtNewGhe.setText(oldValue);
+            }
+        });
     }
     
     public void LoadChuyenXe(){
@@ -64,23 +74,28 @@ public class DoiVeController implements Initializable{
             NhanVien nv = nvService.getNhanVienByTaiKhoanID(App.currentUser.getTaiKhoanId());
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             
-            if(cx == null && soGhe.equals("")){
+            if(cx == null || soGhe.equals("")){
                 alert.setContentText("Vui lòng nhập thông tin vé mới");
             }
             else{
-                if(veXeService.CheckTimeDatVe(cx.getChuyenXeId())){
-                    if(veXeService.doiVe(veCu,Integer.parseInt(soGhe)
-                            ,cx.getChuyenXeId(),nv.getNhanVienId()))
-                    {
-                        alert.setContentText("Đổi vé thành công");
-                        RefreshHandler();
+                if(Integer.parseInt(soGhe) <= cx.getSoVe()){
+                    if(veXeService.CheckTimeDatVe(cx.getChuyenXeId())){
+                        if(veXeService.doiVe(veCu,Integer.parseInt(soGhe)
+                                ,cx.getChuyenXeId(),nv.getNhanVienId()))
+                        {
+                            alert.setContentText("Đổi vé thành công");
+                            RefreshHandler();
+                        }
+                        else{
+                            alert.setContentText("Đổi vé thất bại");
+                        }
                     }
                     else{
-                        alert.setContentText("Đổi vé thất bại");
+                        alert.setContentText("Hết thời gian đặt vé");
                     }
                 }
                 else{
-                    alert.setContentText("Hết thời gian đặt vé");
+                    alert.setContentText("Số ghế không hợp lệ");
                 }
             }
             alert.show();

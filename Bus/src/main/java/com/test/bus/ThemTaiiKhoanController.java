@@ -31,7 +31,13 @@ public class ThemTaiiKhoanController implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        txtType.textProperty().addListener(new ChangeListener<String>(){
+        @Override
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
+            if(!newValue.matches("\\d{0,1}"))
+                    txtType.setText(oldValue);
+            }
+        });
     }
     public void addTKHandler() throws SQLException{
         String userName = txtUserName.getText();

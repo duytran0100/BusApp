@@ -14,6 +14,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,6 +44,14 @@ public class ThemNhanVienController implements Initializable{
         } catch (SQLException ex) {
             Logger.getLogger(ThemNhanVienController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        txtSDT.textProperty().addListener(new ChangeListener<String>(){
+        @Override
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
+            if(!newValue.matches("\\d{0,10}"))
+                    txtSDT.setText(oldValue);
+            }
+        });
     }
     public void addNVHandler() throws SQLException {
         String hoDem = txtHo.getText();

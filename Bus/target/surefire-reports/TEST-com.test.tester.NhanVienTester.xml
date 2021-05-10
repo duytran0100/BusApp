@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="5" failures="0" name="com.test.tester.NhanVienTester" time="0.28" errors="0" skipped="0">
+<testsuite tests="5" failures="0" name="com.test.tester.NhanVienTester" time="0.25" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="15.0.2+7-27"/>
@@ -60,9 +60,9 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.test.tester.NhanVienTester" name="testUpdateNhanVien" time="0.106"/>
-  <testcase classname="com.test.tester.NhanVienTester" name="testCheckNhanVien" time="0.026"/>
-  <testcase classname="com.test.tester.NhanVienTester" name="testGetNhanVien" time="0.052"/>
-  <testcase classname="com.test.tester.NhanVienTester" name="testGetNhanVienByPhone" time="0.033"/>
-  <testcase classname="com.test.tester.NhanVienTester" name="testAddNhanVien" time="0.063"/>
+  <testcase classname="com.test.tester.NhanVienTester" name="testUpdateNhanVien" time="0.108"/>
+  <testcase classname="com.test.tester.NhanVienTester" name="testCheckNhanVien" time="0.022"/>
+  <testcase classname="com.test.tester.NhanVienTester" name="testGetNhanVien" time="0.053"/>
+  <testcase classname="com.test.tester.NhanVienTester" name="testGetNhanVienByPhone" time="0.032"/>
+  <testcase classname="com.test.tester.NhanVienTester" name="testAddNhanVien" time="0.035"/>
 </testsuite>

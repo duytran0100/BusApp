@@ -16,6 +16,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,6 +56,14 @@ public class TaiKhoanController implements Initializable{
             txtSDT.setText("");
             txtDiaChi.setText("");
         }
+        
+        txtSDT.textProperty().addListener(new ChangeListener<String>(){
+        @Override
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
+            if(!newValue.matches("\\d{0,10}"))
+                    txtSDT.setText(oldValue);
+            }
+        });
     }
     
     

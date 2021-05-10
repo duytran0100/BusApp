@@ -105,7 +105,8 @@ public class TuyenDuong {
 
      @Override
     public String toString() {
-        String result = String.format("%s(%s-%s)",this.tuyenDuongName,this.tramDi.getName(),this.tramDen.getName());
+        String result = String.format("%s. %s(%s-%s)",this.tuyenDuongId,
+                this.tuyenDuongName,this.tramDi.getName(),this.tramDen.getName());
         return result;
     }
 }

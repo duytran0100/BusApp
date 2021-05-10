@@ -47,6 +47,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#loadQuanLyTramUI" text="Quản Lý Trạm" />
                   <MenuItem mnemonicParsing="false" onAction="#loadQuanLyXeUI" text="Quản Lý Xe" />
                   <MenuItem mnemonicParsing="false" onAction="#loadQuanLyTuyenDuongUI" text="Quản Lý Tuyến Đường" />
+                  <MenuItem mnemonicParsing="false" onAction="#loadBangGiaUI" text="Quản Lý Bảng Giá" />
                   <MenuItem mnemonicParsing="false" onAction="#LoadQuanLyVeUI" text="Quản Lý Vé" />
                   <MenuItem mnemonicParsing="false" onAction="#loadQuanLyKhachHangUI" text="Quản Lý Khách Hàng" />
                   <MenuItem mnemonicParsing="false" onAction="#loadQuanLyTaiKhoanUI" text="Quản Lý Tài Khoản" />
