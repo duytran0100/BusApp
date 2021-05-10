@@ -29,7 +29,7 @@ CREATE TABLE `banggia` (
   PRIMARY KEY (`BangGiaID`),
   KEY `fk_banggia_tuyenduong_idx` (`TuyenDuongID`),
   CONSTRAINT `fk_banggia_tuyenduong` FOREIGN KEY (`TuyenDuongID`) REFERENCES `tuyenduong` (`TuyenDuongID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `khachhang` (
   PRIMARY KEY (`KhachHangID`),
   KEY `fk_khachhang_taikhoan_idx` (`TaiKhoanID`),
   CONSTRAINT `fk_khachhang_taikhoan` FOREIGN KEY (`TaiKhoanID`) REFERENCES `taikhoan` (`TaiKhoanID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,7 +102,7 @@ CREATE TABLE `khachhang` (
 
 LOCK TABLES `khachhang` WRITE;
 /*!40000 ALTER TABLE `khachhang` DISABLE KEYS */;
-INSERT INTO `khachhang` VALUES (1,'Trần Quốc','Duy','duytran0100@gmail.com','0909792204','Tây Ninh',1);
+INSERT INTO `khachhang` VALUES (1,'Tran Quoc','Duy','duytran0001@gmail.com','0909792905','Tay Ninh',1),(4,'Tran Quoc','Duy','duytran0100@gmail.com','0909792908',NULL,NULL),(6,'Duy1','A',NULL,'12345677',NULL,NULL),(7,'AAAA','AA',NULL,'99933322',NULL,NULL),(8,'BBB','BBB',NULL,'99999222',NULL,NULL),(9,'LLLLL','LLLLL',NULL,'9999',NULL,NULL),(10,'LLLKKK','KKK',NULL,'6666666',NULL,NULL),(11,'Tran Quoc','Duy','duytran0100@gmail.com','0909792908',NULL,NULL);
 /*!40000 ALTER TABLE `khachhang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,7 +124,7 @@ CREATE TABLE `nhanvien` (
   PRIMARY KEY (`NhanVienID`),
   KEY `fk_nhanvien_taikhoan_idx` (`TaiKhoanID`),
   CONSTRAINT `fk_nhanvien_taikhoan` FOREIGN KEY (`TaiKhoanID`) REFERENCES `taikhoan` (`TaiKhoanID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,7 +133,7 @@ CREATE TABLE `nhanvien` (
 
 LOCK TABLES `nhanvien` WRITE;
 /*!40000 ALTER TABLE `nhanvien` DISABLE KEYS */;
-INSERT INTO `nhanvien` VALUES (1,'Duy','Trần','1851050019duy@ou.edu.vn','0909792909','TPHCM',2);
+INSERT INTO `nhanvien` VALUES (1,'Tran','Duy','duytran0100@gmail.com','0886933092','Binh Duong',2);
 /*!40000 ALTER TABLE `nhanvien` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -150,7 +150,7 @@ CREATE TABLE `taikhoan` (
   `password` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `LoaiTaiKhoan` int NOT NULL,
   PRIMARY KEY (`TaiKhoanID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -159,7 +159,7 @@ CREATE TABLE `taikhoan` (
 
 LOCK TABLES `taikhoan` WRITE;
 /*!40000 ALTER TABLE `taikhoan` DISABLE KEYS */;
-INSERT INTO `taikhoan` VALUES (1,'kh1','25d55ad283aa400af464c76d713c07ad',0),(2,'nv1','25d55ad283aa400af464c76d713c07ad',1);
+INSERT INTO `taikhoan` VALUES (1,'kh1','25d55ad283aa400af464c76d713c07ad',0),(2,'nv1','25d55ad283aa400af464c76d713c07ad',1),(31,'kh2','25d55ad283aa400af464c76d713c07ad',0),(32,'nv2','25d55ad283aa400af464c76d713c07ad',1),(34,'duytran0100','e10adc3949ba59abbe56e057f20f883e',0);
 /*!40000 ALTER TABLE `taikhoan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -176,7 +176,7 @@ CREATE TABLE `tram` (
   `DiaChi` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`TramID`),
   UNIQUE KEY `TramID_UNIQUE` (`TramID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,7 +208,7 @@ CREATE TABLE `tuyenduong` (
   KEY `fk_tuyenduong_toid_tram_idx1` (`ToTram`),
   CONSTRAINT `fk_fromtram_toid_tram` FOREIGN KEY (`FromTram`) REFERENCES `tram` (`TramID`),
   CONSTRAINT `fk_totram_toid_tram` FOREIGN KEY (`ToTram`) REFERENCES `tram` (`TramID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -217,7 +217,7 @@ CREATE TABLE `tuyenduong` (
 
 LOCK TABLES `tuyenduong` WRITE;
 /*!40000 ALTER TABLE `tuyenduong` DISABLE KEYS */;
-INSERT INTO `tuyenduong` VALUES (1,'An Sương-Tân Châu',1,2,120,'02:30:00'),(2,'Tân Châu-An Sương',2,1,120,'02:30:00'),(3,'An Sương-Đồng Tháp',1,4,150,'03:07:00'),(4,'Tân Châu-Đồng Tháp',2,4,300,'06:15:00'),(5,'Đồng Tháp-Tân Châu',4,2,300,'06:15:00');
+INSERT INTO `tuyenduong` VALUES (1,'An Sương-Tân Châu',1,2,120,'02:30:00'),(2,'Tân Châu-An Sương',2,1,120,'02:30:00'),(3,'An Sương-Đồng Tháp',1,4,150,'03:07:00'),(4,'Tân Châu-Đồng Tháp',2,4,300,'06:15:00'),(5,'Đồng Tháp-Tân Châu',4,2,300,'06:15:00'),(6,'An Sương-Tân Châu',1,2,120,'02:30:00'),(7,'An Sương-Tân Châu',1,2,120,'02:30:00'),(8,'An Sương-Tân Châu',1,2,120,'02:30:00');
 /*!40000 ALTER TABLE `tuyenduong` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -244,7 +244,7 @@ CREATE TABLE `vexe` (
   CONSTRAINT `fk_vexe_id_chuyenxe` FOREIGN KEY (`ChuyenXeID`) REFERENCES `chuyenxe` (`ChuyenXeID`),
   CONSTRAINT `fk_vexe_khachhang` FOREIGN KEY (`KhachHangID`) REFERENCES `khachhang` (`KhachHangID`),
   CONSTRAINT `fk_vexe_nhanvien` FOREIGN KEY (`NhanVienID`) REFERENCES `nhanvien` (`NhanVienID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -253,7 +253,7 @@ CREATE TABLE `vexe` (
 
 LOCK TABLES `vexe` WRITE;
 /*!40000 ALTER TABLE `vexe` DISABLE KEYS */;
-INSERT INTO `vexe` VALUES (1,1,12,'21:36:49','2021-05-02',1,NULL,1);
+INSERT INTO `vexe` VALUES (1,1,12,'21:36:49','2021-05-02',1,1,1),(15,1,19,'12:22:01','2021-05-09',6,NULL,1),(16,1,25,'12:22:15','2021-05-09',7,1,1),(18,1,20,'13:45:46','2021-05-09',9,1,1);
 /*!40000 ALTER TABLE `vexe` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -274,7 +274,7 @@ CREATE TABLE `xe` (
   PRIMARY KEY (`XeID`),
   KEY `fk_xe_id_tram_idx` (`TramID`),
   CONSTRAINT `fk_xe_id_tram` FOREIGN KEY (`TramID`) REFERENCES `tram` (`TramID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -296,4 +296,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-02 21:54:19
+-- Dump completed on 2021-05-10 21:33:23
